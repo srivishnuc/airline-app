@@ -1,0 +1,28 @@
+.container {
+    height: 100vh;
+    background-color: #E7E3EB;
+
+    .back-btn {
+        border: 1px solid black;
+        border-radius: 5px;
+        padding: 10px;
+        color: white;
+        background: blue;
+    }
+
+    .link-container {
+        display: flex;
+        align-items: center;
+        justify-content: space-evenly;
+        height: 75vh;
+
+        .link {
+            border: 1px solid black;
+            border-radius: 5px;
+            padding: 10px;
+            color: white;
+            background: orange;
+            text-decoration: none;
+        }
+    }
+}
