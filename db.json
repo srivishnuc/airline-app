@@ -1,0 +1,29 @@
+{
+  "users": [
+    {
+      "id": 1,
+      "name": "Sri Vishnu",
+      "authorization": "staff"
+    },
+    {
+      "id": 2,
+      "name": "Krish",
+      "authorization": "admin"
+    },
+    {
+      "id": 3,
+      "name": "Anand",
+      "authorization": "staff"
+    }
+  ],
+  "comments": [
+    {
+      "id": 1,
+      "body": "some comment",
+      "postId": 1
+    }
+  ],
+  "profile": {
+    "name": "typicode"
+  }
+}
