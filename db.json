@@ -2,18 +2,51 @@
   "users": [
     {
       "id": 1,
-      "name": "Sri Vishnu",
+      "username": "srivishnu",
+      "password": "vishnu01",
       "authorization": "staff"
     },
     {
       "id": 2,
-      "name": "Krish",
+      "username": "krish",
+      "password": "krish02",
       "authorization": "admin"
     },
     {
       "id": 3,
-      "name": "Anand",
+      "username": "anand",
+      "password": "anand03",
       "authorization": "staff"
+    },
+    {
+      "username": "asds",
+      "password": "sadads",
+      "authorization": "admin",
+      "id": 4
+    },
+    {
+      "username": "asds",
+      "password": "sadads",
+      "authorization": "admin",
+      "id": 5
+    },
+    {
+      "username": "asds",
+      "password": "sadads",
+      "authorization": "admin",
+      "id": 6
+    },
+    {
+      "username": "asdsa",
+      "password": "asdsad",
+      "authorization": "admin",
+      "id": 7
+    },
+    {
+      "username": "ssad",
+      "password": "feva",
+      "authorization": "admin",
+      "id": 8
     }
   ],
   "comments": [
