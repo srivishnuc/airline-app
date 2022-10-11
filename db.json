@@ -4,19 +4,19 @@
       "id": 1,
       "username": "srivishnu",
       "password": "vishnu01",
-      "authorization": "staff"
+      "authorization": "admin"
     },
     {
       "id": 2,
       "username": "krish",
       "password": "krish02",
-      "authorization": "admin"
+      "authorization": "staff"
     },
     {
       "id": 3,
       "username": "anand",
       "password": "anand03",
-      "authorization": "staff"
+      "authorization": "admin"
     },
     {
       "username": "asds",

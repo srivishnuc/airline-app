@@ -1,8 +1,11 @@
 import React from "react";
-import BackButton from "../ResusableComponents/BackButton";
 import './StaffInFlight.scss'
+import BackButton from "../ResusableComponents/BackButton";
+import { useAuthentication } from "../../customHooks/useAuthentication"
 
 const StaffInFlight = () => {
+
+    useAuthentication('staff');
     return (
         <>
             <BackButton />

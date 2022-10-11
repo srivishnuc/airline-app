@@ -12,33 +12,32 @@ import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 //     }
 // }
 
+export const getUsers = createAsyncThunk(USER_LOGIN, async (payload) => {
+    try {
+        const res = await fetch(`http://localhost:3006/users?username=${payload.username}&password=${payload.password}`).then(data => data.json())
+        return res;
+    } catch (err) {
+        console.log(err);
+    }
+})
+
 // export const getUsers = createAsyncThunk(USER_LOGIN, async (payload) => {
-//     console.log(payload)
+//     console.log(JSON.stringify(payload))
 //     try {
-//         const res = await fetch(`http://localhost:3006/users?username=${payload.username}`).then(data => data.json())
-//         return res
+//         const res = await fetch(`http://localhost:3006/users`, {
+//             method: 'POST',
+//             body: JSON.stringify(payload),
+//             headers: {
+//                 'Content-Type': 'application/json',
+//             }
+//         })
+//         const data = await res.json();
+//         console.log(data);
+//         return data
 //     } catch (err) {
 //         console.log(err)
 //     }
 // })
-
-export const getUsers = createAsyncThunk(USER_LOGIN, async (payload) => {
-    console.log(JSON.stringify(payload))
-    try {
-        const res = await fetch(`http://localhost:3006/users`, {
-            method: 'POST',
-            body: JSON.stringify(payload),
-            headers: {
-                'Content-Type': 'application/json',
-            }
-        })
-        const data = await res.json();
-        console.log(data);
-        return data
-    } catch (err) {
-        console.log(err)
-    }
-})
 
 
 export const user = createSlice({
@@ -47,14 +46,14 @@ export const user = createSlice({
     reducers: {},
     extraReducers: {
         [getUsers.pending]: (state) => {
-            state.msg = 'Fetching data'
+            state.msg = 'Fetching data';
         },
         [getUsers.fulfilled]: (state, { payload }) => {
-            state.users = payload;
+            state.user = payload;
             state.msg = 'Success fetching data';
         },
         [getUsers.rejected]: (state) => {
-            state.msg = 'Error fetching data'
+            state.msg = 'Login failed username/password incorrect';
         },
     }
 })

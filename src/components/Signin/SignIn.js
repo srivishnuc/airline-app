@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
-import { useDispatch } from 'react-redux';
+import { connect, useDispatch, useSelector } from 'react-redux';
+import { useNavigate } from 'react-router-dom'
 import { getUsers } from '../../Redux/Reducer/user'
-
 import './SignIn.scss'
 
 
@@ -10,14 +10,28 @@ const SignIn = () => {
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
     const dispatch = useDispatch();
+    const navigation = useNavigate()
 
 
-    const login = (e) => {
+    const login = async (e) => {
         e.preventDefault()
         if (username.length) {
-            dispatch(getUsers({ username, password, authorization: 'admin' }))
+            const loginUser = () => new Promise(
+                (resolve) => {
+                    resolve(dispatch(getUsers({ username, password })))
+                }
+            )
             setUsername('');
             setPassword('');
+
+            const checkLogin = await loginUser()
+            if (checkLogin && checkLogin.payload.length && checkLogin.payload[0].authorization === 'admin') {
+                navigation('/admin')
+            } else if (checkLogin && checkLogin.payload.length && checkLogin.payload[0].authorization === 'staff') {
+                navigation('/staff')
+            } else {
+                alert('Invalid username or password')
+            }
         } else {
             alert('Enter username')
         }
@@ -34,5 +48,7 @@ const SignIn = () => {
         </>
     )
 }
+
+
 
 export default SignIn

@@ -1,8 +1,10 @@
 import React from 'react'
 import './AdminManagePassenger.scss'
 import BackButton from '../ResusableComponents/BackButton'
+import { useAuthentication } from "../../customHooks/useAuthentication"
 
 const AdminManagePassenger = () => {
+    useAuthentication('admin')
     return (
         <>
             <BackButton />

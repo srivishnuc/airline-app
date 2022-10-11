@@ -1,8 +1,11 @@
 import React from 'react'
-import BackButton from '../ResusableComponents/BackButton'
 import './AdminManageAncillary.scss'
+import BackButton from '../ResusableComponents/BackButton'
+import { useAuthentication } from "../../customHooks/useAuthentication"
 
 const AdminManageAncillary = () => {
+
+    useAuthentication('admin')
     return (
         <>
             <BackButton />

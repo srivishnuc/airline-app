@@ -1,4 +1,4 @@
-const initialState = { users: {}, msg: "" }
+const initialState = { user: {}, msg: "" }
 
 
 export default initialState

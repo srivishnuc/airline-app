@@ -1,11 +1,12 @@
 import React from "react"
-import { Link } from "react-router-dom"
+import { Link, } from "react-router-dom"
 import "./AirlineStaff.scss"
-import BackButton from "../ResusableComponents/BackButton"
+import { useAuthentication } from "../../customHooks/useAuthentication"
+
 const AirlineStaff = () => {
+    useAuthentication('staff')
     return (
         <>
-            <BackButton />
             <div className="link-container">
                 <Link className="link" to="checkin">Check-In</Link>
                 <Link className="link" to="inflight">In-Flight</Link>
