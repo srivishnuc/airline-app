@@ -1,6 +1,7 @@
-import initialState from "../initialState"
+import { user_state as initialState } from "../initialState"
 import { USER_LOGIN } from "../actionTypes"
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
+import axios from "axios";
 
 
 // const users = (InitialState = initialState, action) => {
@@ -14,8 +15,8 @@ import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 
 export const getUsers = createAsyncThunk(USER_LOGIN, async (payload) => {
     try {
-        const res = await fetch(`http://localhost:3006/users?username=${payload.username}&password=${payload.password}`).then(data => data.json())
-        return res;
+        const res = await axios.get(`http://localhost:3006/users?username=${payload.username}&password=${payload.password}`)
+        return res.data;
     } catch (err) {
         console.log(err);
     }

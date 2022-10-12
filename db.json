@@ -58,5 +58,56 @@
   ],
   "profile": {
     "name": "typicode"
-  }
+  },
+  "services": [
+    {
+      "name": "S0001",
+      "list": [
+        "Lounge access",
+        "Baggage",
+        "Wheel chair",
+        "Meal-Veg",
+        "Meal-NonVeg"
+      ]
+    },
+    {
+      "name": "S0003",
+      "list": [
+        "Baggage",
+        "Wheel chair",
+        "Meal-Veg",
+        "Meal-NonVeg"
+      ]
+    }
+  ],
+  "passengers": [
+    {
+      "id": "P001",
+      "flight": "S0001",
+      "name": "Kumar",
+      "passportNo": "A23SD",
+      "address": "Bangalore"
+    },
+    {
+      "id": "P002",
+      "flight": "S0001",
+      "name": "Prakash",
+      "passportNo": "A21SF",
+      "address": "CHENNAI"
+    },
+    {
+      "id": "P003",
+      "flight": "S0003",
+      "name": "Arun",
+      "passportNo": "B26SD",
+      "address": "COIMBATORE"
+    },
+    {
+      "id": "P004",
+      "flight": "S0003",
+      "name": "Siva",
+      "passportNo": "G27SF",
+      "address": "Bangalore"
+    }
+  ]
 }

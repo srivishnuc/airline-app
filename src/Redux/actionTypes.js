@@ -1,1 +1,3 @@
-export const USER_LOGIN = 'USER/LOGIN'
+export const USER_LOGIN = 'USER/LOGIN';
+export const ADMIN_SERVICES = 'ADMIN/SERVICES';
+export const PASSENGER_LIST = 'ADMIN/PASSENGER';
