@@ -1,11 +1,11 @@
-import { admin_state as initialState } from "../initialState"
-import { ADMIN_SERVICES, PASSENGER_LIST } from "../actionTypes"
+import { staff_state as initialState } from "../initialState"
+import { CHECKIN, IN_FLIGHT } from "../actionTypes"
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
 
 
 
-export const getServices = createAsyncThunk(ADMIN_SERVICES, async (payload) => {
+export const getServices = createAsyncThunk(CHECKIN, async (payload) => {
     try {
         const res = await axios.get(`http://localhost:3006/services`)
         return res.data;
@@ -14,7 +14,7 @@ export const getServices = createAsyncThunk(ADMIN_SERVICES, async (payload) => {
     }
 })
 
-export const getPassengers = createAsyncThunk(PASSENGER_LIST, async (payload) => {
+export const getPassengers = createAsyncThunk(IN_FLIGHT, async (payload) => {
     try {
         const res = await axios.get(`http://localhost:3006/passengers`)
         return res.data;
@@ -23,8 +23,8 @@ export const getPassengers = createAsyncThunk(PASSENGER_LIST, async (payload) =>
     }
 })
 
-export const admin = createSlice({
-    name: "ADMIN",
+export const staff = createSlice({
+    name: "STAFF",
     initialState,
     reducers: {},
     extraReducers: {

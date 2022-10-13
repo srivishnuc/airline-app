@@ -42,7 +42,7 @@ export const getUsers = createAsyncThunk(USER_LOGIN, async (payload) => {
 
 
 export const user = createSlice({
-    name: 'USER',
+    name: "USER",
     initialState,
     reducers: {},
     extraReducers: {

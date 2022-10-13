@@ -1,3 +1,5 @@
 export const USER_LOGIN = 'USER/LOGIN';
 export const ADMIN_SERVICES = 'ADMIN/SERVICES';
 export const PASSENGER_LIST = 'ADMIN/PASSENGER';
+export const CHECKIN = 'STAFF/CHECKIN';
+export const IN_FLIGHT = 'STAFF/INFLIGHT';

@@ -109,5 +109,18 @@
       "passportNo": "G27SF",
       "address": "Bangalore"
     }
+  ],
+  "checkin" :[{
+    "passenger":"P003",
+    "seatno":"S1",
+    "isCheckedIn": true,
+    "services":["wheelchair","Meal-Veg"]
+  },{
+    "passenger":"P004",
+    "seatno":"S2",
+    "isCheckedIn": false,
+    "services":["infant","Meal-NonVeg"]
+  }
+
   ]
 }
