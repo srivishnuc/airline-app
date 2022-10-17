@@ -4,7 +4,7 @@ import "./AirlineStaff.scss"
 import { useAuthentication } from "../../customHooks/useAuthentication"
 
 const AirlineStaff = () => {
-    useAuthentication('staff')
+    //useAuthentication('staff')
     return (
         <>
             <div className="link-container">

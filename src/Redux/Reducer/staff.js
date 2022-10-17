@@ -5,18 +5,9 @@ import axios from "axios";
 
 
 
-export const getServices = createAsyncThunk(CHECKIN, async (payload) => {
+export const getCheckin = createAsyncThunk(CHECKIN, async (payload) => {
     try {
-        const res = await axios.get(`http://localhost:3006/services`)
-        return res.data;
-    } catch (err) {
-        console.log(err);
-    }
-})
-
-export const getPassengers = createAsyncThunk(IN_FLIGHT, async (payload) => {
-    try {
-        const res = await axios.get(`http://localhost:3006/passengers`)
+        const res = await axios.get(`http://localhost:3006/checkin`)
         return res.data;
     } catch (err) {
         console.log(err);
@@ -28,20 +19,14 @@ export const staff = createSlice({
     initialState,
     reducers: {},
     extraReducers: {
-        [getServices.fulfilled]: (state, { payload }) => {
-            state.services = payload;
+        [getCheckin.fulfilled]: (state, { payload }) => {
+            state.checkin = payload;
         },
-        [getServices.rejected]: () => {
-            state.services = [];
-        },
-        [getPassengers.fulfilled]: (state, { payload }) => {
-            state.passengers = payload;
-        },
-        [getPassengers.rejected]: () => {
-            state.passengers = [];
-        },
+        [getCheckin.rejected]: () => {
+            state.checkin = [];
+        }
     }
 })
 
 
-export const admins = admin.reducer
+export const staffs = staff.reducer

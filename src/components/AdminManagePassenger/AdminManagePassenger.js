@@ -10,7 +10,6 @@ const AdminManagePassenger = () => {
     useAuthentication("admin")
     const dispatch = useDispatch()
     const passengerList = useSelector(state => state.admins.passengers)
-    console.log(passengerList)
     useEffect(() => {
         dispatch(getPassengers())
     }, [])

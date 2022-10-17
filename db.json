@@ -2,14 +2,14 @@
   "users": [
     {
       "id": 1,
-      "username": "srivishnu",
-      "password": "vishnu01",
+      "username": "vishnu",
+      "password": "u",
       "authorization": "admin"
     },
     {
       "id": 2,
       "username": "krish",
-      "password": "krish02",
+      "password": "h",
       "authorization": "staff"
     },
     {
@@ -110,17 +110,42 @@
       "address": "Bangalore"
     }
   ],
-  "checkin" :[{
-    "passenger":"P003",
-    "seatno":"S1",
-    "isCheckedIn": true,
-    "services":["wheelchair","Meal-Veg"]
-  },{
-    "passenger":"P004",
-    "seatno":"S2",
-    "isCheckedIn": false,
-    "services":["infant","Meal-NonVeg"]
-  }
-
+  "checkin": [
+    {
+      "passenger": "P001",
+      "seatno": "S4",
+      "isCheckedIn": true,
+      "services": [
+        "wheelchair",
+        "Meal-Veg"
+      ]
+    },
+    {
+      "passenger": "P002",
+      "seatno": "S5",
+      "isCheckedIn": false,
+      "services": [
+        "infant",
+        "Meal-NonVeg"
+      ]
+    },
+    {
+      "passenger": "P003",
+      "seatno": "S1",
+      "isCheckedIn": true,
+      "services": [
+        "wheelchair",
+        "Meal-Veg"
+      ]
+    },
+    {
+      "passenger": "P004",
+      "seatno": "S2",
+      "isCheckedIn": false,
+      "services": [
+        "infant",
+        "Meal-NonVeg"
+      ]
+    }
   ]
 }

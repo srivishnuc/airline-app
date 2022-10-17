@@ -5,7 +5,7 @@ import { useAuthentication } from "../../customHooks/useAuthentication"
 
 const StaffInFlight = () => {
 
-    useAuthentication('staff');
+    //useAuthentication('staff');
     return (
         <>
             <BackButton />
