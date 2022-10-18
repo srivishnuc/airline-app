@@ -56,114 +56,117 @@
       "postId": 1
     }
   ],
-  "profile": {
-    "name": "typicode"
-  },
+  "flights": [
+    {
+      "id": "S0001",
+      "name": "S0001",
+      "capacity": 120
+    },
+    {
+      "id": "S0002",
+      "name": "S0002",
+      "capacity": 100
+    }
+  ],
   "services": [
     {
       "flight": "S0001",
       "service": "Lounge access",
-      "sid": "01"
+      "id": 1
     },
     {
       "flight": "S0001",
       "service": "Wheel Chair",
-      "sid": "02"
-    },
-    {
-      "flight": "S0001",
-      "service": "Baggage",
-      "sid": "03"
+      "id": 2
     },
     {
       "flight": "S0001",
       "service": "Veg Meals",
-      "sid": "04"
+      "id": 4
     },
     {
       "flight": "S0001",
       "service": "Non-Veg Meals",
-      "sid": "05"
+      "id": 5
     },
     {
       "flight": "S0001",
       "service": "Shopping Item 1",
-      "sid": "06"
+      "id": 6
     },
     {
       "flight": "S0001",
       "service": "Shopping Item 2",
-      "sid": "07"
+      "id": 7
     }
-
-],
-"passengers": [
-{
-  "id": "P001",
-  "flight": "S0001",
-  "name": "Kumar",
-  "passportNo": "A23SD",
-  "address": "Bangalore"
-},
-{
-  "id": "P002",
-  "flight": "S0001",
-  "name": "Prakash",
-  "passportNo": "A21SF",
-  "address": "CHENNAI"
-},
-{
-  "id": "P003",
-  "flight": "S0003",
-  "name": "Arun",
-  "passportNo": "B26SD",
-  "address": "COIMBATORE"
-},
-{
-  "id": "P004",
-  "flight": "S0003",
-  "name": "Siva",
-  "passportNo": "G27SF",
-  "address": "Bangalore"
-}
-],
-"checkin": [
-{
-  "passenger": "P001",
-  "seatno": "S4",
-  "isCheckedIn": true,
-  "services": [
-    "Wheelchair"
   ],
-  "mealsPreference": "Veg"
-},
-{
-  "passenger": "P002",
-  "seatno": "S5",
-  "isCheckedIn": false,
-  "services": [
-    "Infant",
-    "Baggage"
+  "passengers": [
+    {
+      "id": "P001",
+      "flight": "S0001",
+      "name": "Kumar",
+      "passportNo": "A23SD",
+      "address": "Bangalore"
+    },
+    {
+      "id": "P002",
+      "flight": "S0001",
+      "name": "Prakash",
+      "passportNo": "A21SF",
+      "address": "CHENNAI"
+    },
+    {
+      "id": "P003",
+      "flight": "S0003",
+      "name": "Arun",
+      "passportNo": "B26SD",
+      "address": "COIMBATORE"
+    },
+    {
+      "id": "P004",
+      "flight": "S0003",
+      "name": "Siva",
+      "passportNo": "G27SF",
+      "address": "Bangalore"
+    }
   ],
-  "mealsPreference": "Non-Veg"
-},
-{
-  "passenger": "P003",
-  "seatno": "S1",
-  "isCheckedIn": true,
-  "services": [
-    "Wheelchair"
-  ],
-  "mealsPreference": "Non-Veg"
-},
-{
-  "passenger": "P004",
-  "seatno": "S2",
-  "isCheckedIn": false,
-  "services": [
-    "Lounge access"
-  ],
-  "mealsPreference": "Veg"
-}
-]
+  "checkin": [
+    {
+      "passenger": "P001",
+      "seatno": "S4",
+      "isCheckedIn": true,
+      "services": [
+        "Wheelchair"
+      ],
+      "mealsPreference": "Veg"
+    },
+    {
+      "passenger": "P002",
+      "seatno": "S5",
+      "isCheckedIn": false,
+      "services": [
+        "Infant",
+        "Baggage"
+      ],
+      "mealsPreference": "Non-Veg"
+    },
+    {
+      "passenger": "P003",
+      "seatno": "S1",
+      "isCheckedIn": true,
+      "services": [
+        "Wheelchair"
+      ],
+      "mealsPreference": "Non-Veg"
+    },
+    {
+      "passenger": "P004",
+      "seatno": "S2",
+      "isCheckedIn": false,
+      "services": [
+        "Lounge access"
+      ],
+      "mealsPreference": "Veg"
+    }
+  ]
 }

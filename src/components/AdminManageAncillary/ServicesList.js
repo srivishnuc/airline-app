@@ -1,31 +1,27 @@
 import React from "react";
+import { delAncillary, getServices } from '../../Redux/Reducer/admin'
+import { useDispatch } from "react-redux";
 
-const ServiceList = ({ flightname, list, meals }) => {
+const ServiceList = ({ flight, service, id }) => {
+    console.log(id)
 
+    const dispatch = useDispatch()
     const EditServices = () => {
 
     }
     const DeleteServices = () => {
-
+        dispatch(delAncillary({ id }))
+        dispatch(getServices())
     }
-    const AddServices = () => {
 
-    }
-    const listMap = (lists) => lists.map((lst, index) =>         
-            <span key={index}>{lst}{index === (lists.length - 1) ? '.' : ", "}</span>         
-    )
-    const servicelist = listMap(list)
-    const mealsList = listMap(meals)
     return (
         <tr>
-            <td>{flightname}</td>
-            <td>{servicelist}</td>
+            <td>{flight}</td>
+            <td>{service}</td>
             <td>
-            <span> <button onClick={EditServices}> Edit</button></span>
-            <span> <button onClick={DeleteServices}> Delete</button></span>
-            <span> <button onClick={AddServices}> Add</button></span>
+                <span> <button onClick={EditServices}> Edit</button></span>
+                <span> <button onClick={DeleteServices}> Delete</button></span>
             </td>
-            <td>{mealsList}</td>
         </tr>
     )
 }
