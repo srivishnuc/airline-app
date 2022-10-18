@@ -13,6 +13,7 @@ export const getCheckin = createAsyncThunk(CHECKIN, async (payload) => {
         console.log(err);
     }
 })
+ 
 
 export const staff = createSlice({
     name: "STAFF",
@@ -22,9 +23,9 @@ export const staff = createSlice({
         [getCheckin.fulfilled]: (state, { payload }) => {
             state.checkin = payload;
         },
-        [getCheckin.rejected]: () => {
+        [getCheckin.rejected]: (state) => {
             state.checkin = [];
-        }
+        }        
     }
 })
 

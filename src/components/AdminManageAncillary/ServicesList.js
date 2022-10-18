@@ -1,14 +1,32 @@
 import React from "react";
 
-const ServiceList = ({ flightname, list }) => {
-    const servicelist = list.map((lst, index) =>
-        <span key={index}>{lst}{index === (list.length - 1) ? '.' : ", "}</span>
+const ServiceList = ({ flightname, list, meals }) => {
+
+    const EditServices = () => {
+
+    }
+    const DeleteServices = () => {
+
+    }
+    const AddServices = () => {
+
+    }
+    const listMap = (lists) => lists.map((lst, index) =>         
+            <span key={index}>{lst}{index === (lists.length - 1) ? '.' : ", "}</span>         
     )
+    const servicelist = listMap(list)
+    const mealsList = listMap(meals)
     return (
-        <ul>
-            <li>{flightname}</li>
-            <li>{servicelist}</li>
-        </ul>
+        <tr>
+            <td>{flightname}</td>
+            <td>{servicelist}</td>
+            <td>
+            <span> <button onClick={EditServices}> Edit</button></span>
+            <span> <button onClick={DeleteServices}> Delete</button></span>
+            <span> <button onClick={AddServices}> Add</button></span>
+            </td>
+            <td>{mealsList}</td>
+        </tr>
     )
 }
 

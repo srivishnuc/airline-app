@@ -8,7 +8,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import PassengerCheckInDetails from './PassengerCheckInDetails'
 
 const StaffCheckIn = () => {
-    //useAuthentication('staff')
+    useAuthentication('staff')
     const dispatch = useDispatch()
     const checkInDetails = useSelector(state => state.staffs.checkin)
     const passengerDetails = useSelector(state => state.admins.passengers)
@@ -19,18 +19,31 @@ const StaffCheckIn = () => {
         dispatch(getCheckin())
     }, [])
 
-    const passengerCheckInDetails = ((arr1, arr2) => {
-        let arr = []
-        if (arr1.length && arr2.length) {
-            return arr1.map((item, i) => {
-                if (item.id === arr2[i].passenger) {
-                    //merging two objects
-                    arr.push({ ...item, ...arr2[i] })
-                    return arr
-                }
+    // const passengerCheckInDetails = ((arr1, arr2) => {
+    //     let arr = []
+    //     if (arr1.length && arr2.length) {
+    //          arr1.map((item, i) => {
+    //             if (item.id === arr2[i].passenger) {
+    //                 //merging two objects
+    //                 arr.push({ ...item, ...arr2[i] })                    
+    //             }
+    //         })
+    //         return arr
+    //     } else return [{ id: "", flight: "", name: "", isCheckedIn: "", seatno: "", services: [] }]
+    // })(passengerDetails, checkInDetails)
+
+    let passengerCheckInDetails = []
+    for(let i = 0; i<passengerDetails.length;i++){
+        checkInDetails.forEach(chckDetails => {
+           if(chckDetails.passenger === passengerDetails[i].id){
+            passengerCheckInDetails.push({
+                ...passengerDetails[i],
+                ...chckDetails
             })
-        } else return [{ id: "", flight: "", name: "", isCheckedIn: "", seatno: "", services: [] }]
-    })(passengerDetails, checkInDetails)
+           }
+        })
+    }
+    
     return (
         <>
             <BackButton />

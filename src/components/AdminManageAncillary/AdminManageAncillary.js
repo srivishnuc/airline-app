@@ -5,6 +5,7 @@ import { useAuthentication } from "../../customHooks/useAuthentication"
 import { useDispatch, useSelector } from "react-redux"
 import { getServices } from "../../Redux/Reducer/admin"
 import ServiceList from "./ServicesList"
+import Table from 'react-bootstrap/Table';
 
 const AdminManageAncillary = () => {
     useAuthentication("admin")
@@ -18,7 +19,18 @@ const AdminManageAncillary = () => {
         <>
             <BackButton />
             <h1>Admin Manage Ancillary</h1>
-            {services.map((ser) => <ServiceList key={ser.name} flightname={ser.name} list={ser.list} />)}
+            <Table striped>
+                <thead>
+                    <tr>
+                        <th>Flight Name</th>
+                        <th>Ancillary services</th>
+                        <th>Meals</th>
+                    </tr>
+                </thead>
+                <tbody>
+                {services.map((ser) => <ServiceList key={ser.name} flightname={ser.name} list={ser.list} meals={ser.meals} />)}
+                </tbody>
+            </Table>
         </>
 
     )
