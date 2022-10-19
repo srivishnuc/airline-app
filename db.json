@@ -1,0 +1,181 @@
+{
+  "users": [
+    {
+      "id": 1,
+      "username": "vishnu",
+      "password": "u",
+      "authorization": "admin"
+    },
+    {
+      "id": 2,
+      "username": "krish",
+      "password": "h",
+      "authorization": "staff"
+    },
+    {
+      "id": 3,
+      "username": "anand",
+      "password": "anand03",
+      "authorization": "admin"
+    },
+    {
+      "username": "asds",
+      "password": "sadads",
+      "authorization": "admin",
+      "id": 4
+    },
+    {
+      "username": "asds",
+      "password": "sadads",
+      "authorization": "admin",
+      "id": 5
+    },
+    {
+      "username": "asds",
+      "password": "sadads",
+      "authorization": "admin",
+      "id": 6
+    },
+    {
+      "username": "asdsa",
+      "password": "asdsad",
+      "authorization": "admin",
+      "id": 7
+    },
+    {
+      "username": "ssad",
+      "password": "feva",
+      "authorization": "admin",
+      "id": 8
+    }
+  ],
+  "comments": [
+    {
+      "id": 1,
+      "body": "some comment",
+      "postId": 1
+    }
+  ],
+  "flights": [
+    {
+      "id": "S0001",
+      "name": "S0001",
+      "capacity": 120
+    },
+    {
+      "id": "S0002",
+      "name": "S0002",
+      "capacity": 100
+    }
+  ],
+  "services": [
+    {
+      "flight": "S0001",
+      "service": "Non-Veg Meals",
+      "id": 5
+    },
+    {
+      "service": "Shopping Item 1",
+      "flight": "S0001",
+      "id": 9
+    },
+    {
+      "service": "Shopping Item 2",
+      "flight": "S0001",
+      "id": 10
+    },
+    {
+      "service": "Veg Meal",
+      "flight": "S0001",
+      "id": 11
+    },
+    {
+      "flight": "S0001",
+      "service": "Wheel Chair",
+      "id": 12
+    }
+  ],
+  "passengers": [
+    {
+      "flight": "S0001",
+      "name": "Kumar",
+      "address": "Chennai",
+      "passportNo": "A23SD",
+      "id": 1
+    },
+    {
+      "flight": "S0002",
+      "name": "Tetset",
+      "address": "Bangalore",
+      "passportNo": "sete",
+      "id": 2
+    },
+    {
+      "id": 3,
+      "flight": "S0001",
+      "name": "Arun",
+      "passportNo": "B26SD",
+      "address": "COIMBATORE"
+    },
+    {
+      "id": 4,
+      "flight": "S0001",
+      "name": "Siva",
+      "passportNo": "G27SF",
+      "address": "Bangalore"
+    },
+    {
+      "flight": "S0002",
+      "name": "tset",
+      "passportNo": "1asd3",
+      "address": "Tuticorin",
+      "id": 5
+    },
+    {
+      "flight": "S0001",
+      "name": "ascea",
+      "address": "CBe",
+      "passportNo": "Testt",
+      "id": 6
+    }
+  ],
+  "checkin": [
+    {
+      "passenger": "P001",
+      "seatno": "S4",
+      "isCheckedIn": true,
+      "services": [
+        "Wheelchair"
+      ],
+      "mealsPreference": "Veg"
+    },
+    {
+      "passenger": "P002",
+      "seatno": "S5",
+      "isCheckedIn": false,
+      "services": [
+        "Infant",
+        "Baggage"
+      ],
+      "mealsPreference": "Non-Veg"
+    },
+    {
+      "passenger": "P003",
+      "seatno": "S1",
+      "isCheckedIn": true,
+      "services": [
+        "Wheelchair"
+      ],
+      "mealsPreference": "Non-Veg"
+    },
+    {
+      "passenger": "P004",
+      "seatno": "S2",
+      "isCheckedIn": false,
+      "services": [
+        "Lounge access"
+      ],
+      "mealsPreference": "Veg"
+    }
+  ]
+}

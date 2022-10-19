@@ -14,6 +14,7 @@ const App = () => {
     return (
         <div className="container">
             <Header />
+            <main>
             <Routes>
                 <Route path="/" element={<SignIn />} />
                 <Route path="staff" >
@@ -27,6 +28,12 @@ const App = () => {
                     <Route path="ancillary" element={<AdminManageAncillary />} />
                 </Route>
             </Routes>
+            </main>
+            <footer class="bg-light text-center text-lg-start mt-3">
+                <div class="text-center p-3">
+                    &copy; 2022 Copyright: SV Airlines
+                </div>
+            </footer>
         </div >)
 }
 

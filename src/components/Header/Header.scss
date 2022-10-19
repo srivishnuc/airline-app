@@ -1,8 +1,14 @@
 .header {
+    display: flex;
     padding: 15px 20px;
     background-color: #6200EE;
-
+    cursor: default;
     h1 {
         color: #000;
+        cursor: pointer;
+        img {
+            vertical-align: text-top;
+        }
     }
+
 }
