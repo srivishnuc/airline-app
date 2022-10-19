@@ -102,32 +102,46 @@
   ],
   "passengers": [
     {
-      "id": "P001",
       "flight": "S0001",
       "name": "Kumar",
+      "address": "Chennai",
       "passportNo": "A23SD",
-      "address": "Bangalore"
+      "id": 1
     },
     {
-      "id": "P002",
+      "flight": "S0002",
+      "name": "Tetset",
+      "address": "Bangalore",
+      "passportNo": "sete",
+      "id": 2
+    },
+    {
+      "id": 3,
       "flight": "S0001",
-      "name": "Prakash",
-      "passportNo": "A21SF",
-      "address": "CHENNAI"
-    },
-    {
-      "id": "P003",
-      "flight": "S0003",
       "name": "Arun",
       "passportNo": "B26SD",
       "address": "COIMBATORE"
     },
     {
-      "id": "P004",
-      "flight": "S0003",
+      "id": 4,
+      "flight": "S0001",
       "name": "Siva",
       "passportNo": "G27SF",
       "address": "Bangalore"
+    },
+    {
+      "flight": "S0002",
+      "name": "tset",
+      "passportNo": "1asd3",
+      "address": "Tuticorin",
+      "id": 5
+    },
+    {
+      "flight": "S0001",
+      "name": "ascea",
+      "address": "CBe",
+      "passportNo": "Testt",
+      "id": 6
     }
   ],
   "checkin": [

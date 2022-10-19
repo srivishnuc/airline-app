@@ -1,5 +1,5 @@
 import { admin_state as initialState } from "../initialState"
-import { URL, ADMIN_SERVICES, PASSENGER_LIST, ADMIN_LIST, ADD_ANCILLARY, DEL_ANCILLARY ,EDIT_ANCILLARY } from "../actionTypes"
+import { URL, ADMIN_SERVICES, PASSENGER_LIST, ADMIN_LIST, ADD_ANCILLARY, DEL_ANCILLARY, EDIT_ANCILLARY, ADD_PASSENGER, EDIT_PASSENGER } from "../actionTypes"
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
 
@@ -32,7 +32,7 @@ export const getFlights = createAsyncThunk(ADMIN_LIST, async (payload) => {
     }
 })
 
-export const postAncillary = createAsyncThunk(ADD_ANCILLARY, async (payload,{dispatch}) => {
+export const postAncillary = createAsyncThunk(ADD_ANCILLARY, async (payload, { dispatch }) => {
     try {
         const res = await axios.post(`${URL}services`, payload)
         dispatch(getServices())
@@ -42,8 +42,8 @@ export const postAncillary = createAsyncThunk(ADD_ANCILLARY, async (payload,{dis
     }
 })
 
-export const delAncillary = createAsyncThunk(DEL_ANCILLARY, async (payload,{dispatch}) => {
-    try {         
+export const delAncillary = createAsyncThunk(DEL_ANCILLARY, async (payload, { dispatch }) => {
+    try {
         const res = await axios.delete(`${URL}services/${payload.id}`)
         dispatch(getServices())
         return res.data;
@@ -52,7 +52,7 @@ export const delAncillary = createAsyncThunk(DEL_ANCILLARY, async (payload,{disp
     }
 })
 
-export const editAncillary = createAsyncThunk(EDIT_ANCILLARY, async (payload,{dispatch}) => {
+export const editAncillary = createAsyncThunk(EDIT_ANCILLARY, async (payload, { dispatch }) => {
     try {
         const res = await axios.put(`${URL}services/${payload.id}`, payload.data)
         dispatch(getServices())
@@ -62,6 +62,25 @@ export const editAncillary = createAsyncThunk(EDIT_ANCILLARY, async (payload,{di
     }
 })
 
+export const postPassenger = createAsyncThunk(ADD_PASSENGER, async (payload, { dispatch }) => {
+    try {
+        const res = await axios.post(`${URL}passengers`, payload)
+        dispatch(getPassengers())
+        return res.data;
+    } catch (err) {
+        console.log(err);
+    }
+})
+
+export const editPassenger = createAsyncThunk(EDIT_PASSENGER, async (payload, { dispatch }) => {
+    try {
+        const res = await axios.put(`${URL}passengers/${payload.id}`, payload.data)
+        dispatch(getPassengers())
+        return res.data;
+    } catch (err) {
+        console.log(err);
+    }
+})
 
 export const admin = createSlice({
     name: "ADMIN",

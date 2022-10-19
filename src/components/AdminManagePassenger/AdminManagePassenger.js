@@ -1,8 +1,8 @@
-import React, { useEffect,useState } from "react"
+import React, { useEffect, useState } from "react"
 import "./AdminManagePassenger.scss"
 import BackButton from "../ResusableComponents/BackButton"
 import { useAuthentication } from "../../customHooks/useAuthentication"
-import { getPassengers } from "../../Redux/Reducer/admin"
+import { getPassengers, getFlights, postPassenger } from "../../Redux/Reducer/admin"
 import { useDispatch, useSelector } from "react-redux"
 import PassengerList from "./PassengerList"
 import Table from 'react-bootstrap/Table';
@@ -13,30 +13,59 @@ const AdminManagePassenger = () => {
     useAuthentication("admin")
     const dispatch = useDispatch()
     const admin = useSelector(state => state.admins)
-    const [isAddPassenger,setAddPassenger] = useState(false)
-    const [name,setName] = useState('')
-    const [passNo,setPassNo] = useState('')
-    const [address,setAddress] = useState('')
+    const [isAddPassenger, setAddPassenger] = useState(false)
+    const [name, setName] = useState('')
+    const [passNo, setPassNo] = useState('')
+    const [address, setAddress] = useState('')
+    const [selectedFlight, setFlight] = useState('')
+    const [isError, setError] = useState(false)
 
     useEffect(() => {
         dispatch(getPassengers())
         dispatch(getFlights())
     }, [])
+
+    const addPassenger = () => {
+        if (!isAddPassenger) {
+            setAddPassenger(true)
+        } else {
+            if (name && passNo && address) {
+                dispatch(postPassenger({ flight: selectedFlight, name, passportNo: passNo, address }))
+                setAddPassenger(false)
+                setError(false)
+                setName('')
+                setPassNo('')
+                setAddress('')
+            } else {
+                setError(true)
+            }
+
+        }
+    }
+
+    const cancelAdd = () => {
+        setError(false)
+        setAddPassenger(false);
+        setName('')
+        setPassNo('')
+        setAddress('')
+    }
     return (
         <>
             <BackButton />
             <h1>Admin Manage Passenger</h1>
 
             <Card>
+                {isError && <Alert variant="danger">Enter all required passenger details</Alert>}
                 <Table striped>
                     <thead>
                         <tr>
                             <th>{isAddPassenger && <select onChange={(e) => { setFlight(e.target.value) }}>{admin.flights.map(flight => <option key={flight.id} value={flight.value} >{flight.name}</option>)}</select>}</th>
-                            <th>{isAddPassenger && <input type="text" placeholder="Name" value={name} onChange={e=>setName(e.target.value)}/>} </th>
-                            <th>{isAddPassenger && <input type="text" placeholder="Passport No" value={passNo} onChange={e=>setPassNo(e.target.value)}/> }</th>
-                            <th>{isAddPassenger && <input type="text" placeholder="Address" value={address} onChange={e=>setAddress(e.target.value)} /> }</th>
+                            <th>{isAddPassenger && <input type="text" placeholder="Name" value={name} onChange={e => setName(e.target.value)} />} </th>
+                            <th>{isAddPassenger && <input type="text" placeholder="Passport No" value={passNo} onChange={e => setPassNo(e.target.value)} />}</th>
+                            <th>{isAddPassenger && <input type="text" placeholder="Address" value={address} onChange={e => setAddress(e.target.value)} />}</th>
                             <th><span><button onClick={addPassenger}>{isAddPassenger ? 'Add' : 'Add Passenger'}</button></span>
-                            &nbsp; {isAddPassenger && <span><button onClick={cancelAdd}>&nbsp;Cancel</button></span>}</th>
+                                &nbsp; {isAddPassenger && <span><button onClick={cancelAdd}>&nbsp;Cancel</button></span>}</th>
                         </tr>
                         <tr>
                             <th>Flight</th>
@@ -47,7 +76,7 @@ const AdminManagePassenger = () => {
                         </tr>
                     </thead>
                     <tbody>
-                        {admin.passengerList.map((plst) => <PassengerList key={plst.id} name={plst.name} flight={plst.flight} address={plst.address} passno={plst.passportNo} />)}
+                        {admin.passengers.map((plst) => <PassengerList key={plst.id} id={plst.id} name={plst.name} flight={plst.flight} address={plst.address} passno={plst.passportNo} setError={setError} />)}
                     </tbody>
                 </Table>
             </Card>
