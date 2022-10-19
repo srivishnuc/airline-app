@@ -4,7 +4,7 @@ import React from 'react'
 const StaffInFlightDetails = ({flight,name,mealsPreference,services}) =>{
     
 return(<>
-<ul>
+<ul role="presentation">
     <li>{flight}</li>
     <li>{name}</li>
     <li>{mealsPreference}</li>

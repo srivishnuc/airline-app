@@ -31,7 +31,8 @@ const StaffInFlight = () => {
     return (
         <>
             <BackButton />
-            <h1>Staff In Flight</h1>
+            <h1 class="fs-3">In Flight</h1>
+            <h2 class="fs-5">In Flight Details</h2>
             {passengerInFlightDetails.map(inflt => <StaffInFlightDetails key={inflt.id}  flight={inflt.flight} name={inflt.name} mealsPreference={inflt.mealsPreference} services={inflt.services}/>)}
         </>
     )

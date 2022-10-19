@@ -47,18 +47,26 @@ const AdminManageAncillary = () => {
     }
 
     return (
-        <Card className="mange-ancillary">
-            <BackButton />
-            <h1>Admin Manage Ancillary</h1>
+        <>
+        <BackButton />
+        <h1 class="fs-3">Manage Ancillary Services</h1>
+        <h2 class="fs-5">Ancillary Services List</h2>
+        <Card className="mange-ancillary">            
             {isError && <Alert variant="danger">Enter Ancillary Services</Alert>}
             <Table striped>
+                <caption>List of Ancillary Services</caption>
                 <thead>
                     <tr>
-                        <th>{isAddServices && <select onChange={(e) => { setFlight(e.target.value) }}>{admin.flights.map(flight => <option key={flight.id} value={flight.value} >{flight.name}</option>)}</select>}</th>
-                        <th>{isAddServices && <input type="text" onChange={(e) => { setError(false); setNewService(e.target.value) }} value={newService} placeholder="Enter Ancillary Services" />}</th>
-                        <th><span><button onClick={AddServices}>{isAddServices ? 'Add' : 'Add Service'}</button></span>
+                        <td>
+                            {isAddServices && <select onChange={(e) => { setFlight(e.target.value) }}>{admin.flights.map(flight => <option key={flight.id} value={flight.value} >{flight.name}</option>)}</select>}
+                        </td>
+                        <td>
+                            {isAddServices && <input type="text" onChange={(e) => { setError(false); setNewService(e.target.value) }} value={newService} placeholder="Enter Ancillary Services" />}
+                        </td>
+                        <td>
+                            <span><button onClick={AddServices}>{isAddServices ? 'Add' : 'Add Service'}</button></span>
                             &nbsp; {isAddServices && <span><button onClick={cancelAdd}>&nbsp;Cancel</button></span>}
-                        </th>
+                        </td>
                     </tr>
                     <tr>
                         <th>Flight Name</th>
@@ -71,7 +79,7 @@ const AdminManageAncillary = () => {
                 </tbody>
             </Table>
         </Card>
-
+    </>
     )
 }
 

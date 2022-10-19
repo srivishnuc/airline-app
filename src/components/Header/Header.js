@@ -6,10 +6,10 @@ import {useNavigate} from 'react-router-dom'
 const Header = () => {
 const navigate = useNavigate()
     return (
-        <div className="header">
-            <h1 onClick={()=>navigate('/')}><img src={logo} alt="logo" width="50rem" height="50rem" /> SV Airline</h1>
+        <header className="header">
+            <div class="fs-1 text-white fw-bold" onClick={()=>navigate('/')}><img src={logo} alt="Airlines logo" width="50rem" height="50rem" /> SV Airline</div>
             <Logout />
-        </div >
+        </header >
     )
 }
 

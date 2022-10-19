@@ -71,11 +71,6 @@
   "services": [
     {
       "flight": "S0001",
-      "service": "Lounge access",
-      "id": 1
-    },
-    {
-      "flight": "S0001",
       "service": "Non-Veg Meals",
       "id": 5
     },

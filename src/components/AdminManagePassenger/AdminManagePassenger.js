@@ -53,19 +53,30 @@ const AdminManagePassenger = () => {
     return (
         <>
             <BackButton />
-            <h1>Admin Manage Passenger</h1>
-
+            <h1 class="fs-3">Manage Passenger</h1>
+            <h2 class="fs-5">Passengers List</h2>
             <Card>
                 {isError && <Alert variant="danger">Enter all required passenger details</Alert>}
-                <Table striped>
+                <Table striped role="presentation">
+                    <caption>List of passengers</caption>
                     <thead>
                         <tr>
-                            <th>{isAddPassenger && <select onChange={(e) => { setFlight(e.target.value) }}>{admin.flights.map(flight => <option key={flight.id} value={flight.value} >{flight.name}</option>)}</select>}</th>
-                            <th>{isAddPassenger && <input type="text" placeholder="Name" value={name} onChange={e => setName(e.target.value)} />} </th>
-                            <th>{isAddPassenger && <input type="text" placeholder="Passport No" value={passNo} onChange={e => setPassNo(e.target.value)} />}</th>
-                            <th>{isAddPassenger && <input type="text" placeholder="Address" value={address} onChange={e => setAddress(e.target.value)} />}</th>
-                            <th><span><button onClick={addPassenger}>{isAddPassenger ? 'Add' : 'Add Passenger'}</button></span>
-                                &nbsp; {isAddPassenger && <span><button onClick={cancelAdd}>&nbsp;Cancel</button></span>}</th>
+                            <td>
+                                {isAddPassenger && <select onChange={(e) => { setFlight(e.target.value) }}>{admin.flights.map(flight => <option key={flight.id} value={flight.value} >{flight.name}</option>)}</select>}
+                            </td>
+                            <td>
+                                {isAddPassenger && <input type="text" placeholder="Name" value={name} onChange={e => setName(e.target.value)} />} 
+                            </td>
+                            <td>
+                                {isAddPassenger && <input type="text" placeholder="Passport No" value={passNo} onChange={e => setPassNo(e.target.value)} />}
+                            </td>
+                            <td>
+                                {isAddPassenger && <input type="text" placeholder="Address" value={address} onChange={e => setAddress(e.target.value)} />}
+                            </td>
+                            <td>
+                                <span><button onClick={addPassenger}>{isAddPassenger ? 'Add' : 'Add Passenger'}</button></span>
+                                &nbsp; {isAddPassenger && <span><button onClick={cancelAdd}>&nbsp;Cancel</button></span>}
+                            </td>
                         </tr>
                         <tr>
                             <th>Flight</th>

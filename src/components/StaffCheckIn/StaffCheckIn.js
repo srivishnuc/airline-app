@@ -47,7 +47,8 @@ const StaffCheckIn = () => {
     return (
         <>
             <BackButton />
-            <h1>Staff Check In</h1>
+            <h1 class="fs-3">Check In</h1>
+            <h2 class="fs-5">Check In Details</h2>
             {passengerCheckInDetails.map((passenger, index) => <PassengerCheckInDetails key={index} flight={passenger.flight} name={passenger.name} isCheckedIn={passenger.isCheckedIn} seatno={passenger.seatno} services={passenger.services} />)}
         </>
     )
