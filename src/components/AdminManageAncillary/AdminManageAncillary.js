@@ -7,6 +7,7 @@ import { getServices, getFlights, postAncillary } from "../../Redux/Reducer/admi
 import ServiceList from "./ServicesList"
 import Table from 'react-bootstrap/Table';
 import Alert from 'react-bootstrap/Alert';
+import Card from "react-bootstrap/Card"
 
 
 const AdminManageAncillary = () => {
@@ -17,7 +18,7 @@ const AdminManageAncillary = () => {
     const [newService, setNewService] = useState('')
     const [selectedFlight, setFlight] = useState('')
     const [isError, setError] = useState(false)
-
+ 
     useEffect(() => {
         dispatch(getServices())
         dispatch(getFlights())
@@ -30,8 +31,7 @@ const AdminManageAncillary = () => {
         }
         else {
             if (newService) {
-                dispatch(postAncillary({ flight: selectedFlight, service: newService }))
-                dispatch(getServices())
+                dispatch(postAncillary({ flight: selectedFlight, service: newService }))                
                 setNewService('')
                 setAddServices(!isAddServices)
             } else {
@@ -43,10 +43,11 @@ const AdminManageAncillary = () => {
     const cancelAdd = () => {
         setAddServices(false)
         setNewService('')
+        setError(false)
     }
 
     return (
-        <>
+        <Card className="mange-ancillary">
             <BackButton />
             <h1>Admin Manage Ancillary</h1>
             {isError && <Alert variant="danger">Enter Ancillary Services</Alert>}
@@ -66,10 +67,10 @@ const AdminManageAncillary = () => {
                     </tr>
                 </thead>
                 <tbody>
-                    {admin.services.map((ser) => <ServiceList key={ser.id} id={ser.id} flight={ser.flight} service={ser.service} />)}
+                    {admin.services.map((ser) => <ServiceList key={ser.id} id={ser.id} flight={ser.flight} service={ser.service} setError={setError}/>)}
                 </tbody>
             </Table>
-        </>
+        </Card>
 
     )
 }

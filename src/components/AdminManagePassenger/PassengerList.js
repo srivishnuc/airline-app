@@ -4,12 +4,12 @@ import React from "react";
 const PassengerList = ({ flight, name, passno, address }) => {
 
     return (
-        <ul>
-            <li>{flight}</li>
-            <li>{name}</li>
-            <li>{passno}</li>
-            <li>{address}</li>
-        </ul>
+        <tr>
+            <td>{flight}</td>
+            <td>{name}</td>
+            <td>{passno}</td>
+            <td>{address}</td>
+        </tr>
     )
 }
 

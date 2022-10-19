@@ -1,5 +1,5 @@
 import { admin_state as initialState } from "../initialState"
-import { URL, ADMIN_SERVICES, PASSENGER_LIST, ADMIN_LIST, ADD_ANCILLARY, DEL_ANCILLARY } from "../actionTypes"
+import { URL, ADMIN_SERVICES, PASSENGER_LIST, ADMIN_LIST, ADD_ANCILLARY, DEL_ANCILLARY ,EDIT_ANCILLARY } from "../actionTypes"
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
 
@@ -32,24 +32,36 @@ export const getFlights = createAsyncThunk(ADMIN_LIST, async (payload) => {
     }
 })
 
-export const postAncillary = createAsyncThunk(ADD_ANCILLARY, async (payload) => {
+export const postAncillary = createAsyncThunk(ADD_ANCILLARY, async (payload,{dispatch}) => {
     try {
         const res = await axios.post(`${URL}services`, payload)
+        dispatch(getServices())
         return res.data;
     } catch (err) {
         console.log(err);
     }
 })
 
-export const delAncillary = createAsyncThunk(DEL_ANCILLARY, async (payload) => {
-    try {
-        console.log(payload.id)
+export const delAncillary = createAsyncThunk(DEL_ANCILLARY, async (payload,{dispatch}) => {
+    try {         
         const res = await axios.delete(`${URL}services/${payload.id}`)
+        dispatch(getServices())
         return res.data;
     } catch (err) {
         console.log(err);
     }
 })
+
+export const editAncillary = createAsyncThunk(EDIT_ANCILLARY, async (payload,{dispatch}) => {
+    try {
+        const res = await axios.put(`${URL}services/${payload.id}`, payload.data)
+        dispatch(getServices())
+        return res.data;
+    } catch (err) {
+        console.log(err);
+    }
+})
+
 
 export const admin = createSlice({
     name: "ADMIN",

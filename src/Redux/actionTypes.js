@@ -6,4 +6,5 @@ export const ADD_ANCILLARY = "ADMIN/ADD_ANCILLARY";
 export const CHECKIN = "STAFF/CHECKIN";
 export const IN_FLIGHT = "STAFF/INFLIGHT";
 export const DEL_ANCILLARY = "ADMIN/DEL_ANCILLARY";
+export const EDIT_ANCILLARY = 'ADMIN/EDIT_ANCILLARY'
 export const URL = "http://localhost:3006/";
