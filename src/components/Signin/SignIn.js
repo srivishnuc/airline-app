@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
-import { connect, useDispatch, useSelector } from 'react-redux';
+import { Card, Button, Alert } from 'react-bootstrap';
+import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom'
 import { getUsers } from '../../Redux/Reducer/user'
 import './SignIn.scss'
@@ -9,6 +10,7 @@ import './SignIn.scss'
 const SignIn = () => {
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
+    const [error, setError] = useState(false);
     const dispatch = useDispatch();
     const navigation = useNavigate()
 
@@ -30,31 +32,34 @@ const SignIn = () => {
             } else if (checkLogin && checkLogin.payload.length && checkLogin.payload[0].authorization === 'staff') {
                 navigation('/staff')
             } else {
-                alert('Invalid username or password')
+                setError(true)
+                setTimeout(() => { setError(false) }, 5000)
             }
         } else {
-            alert('Enter username')
+            setError(true)
+            setTimeout(() => { setError(false) }, 5000)
         }
     }
 
     return (
-        <>
-            <h1 class="fs-3">Sign In Page</h1>
-            <h2 class="fs-5">Enter your Login credentials</h2>
+        <Card>
+            <h1 className="fs-3">Sign In Page</h1>
+            <h2 className="fs-5">Enter your Login credentials</h2>
+            {error && <Alert variant="danger">Enter valid username/password</Alert>}
             <form onSubmit={login}>
-            <div class="mb-3 ">
-                <label for="username">Username:</label>
-                <input id="username" className="input-text" type="text" value={username} onChange={(e) => setUsername(e.target.value)} placeholder="Username" />
-            </div>
-            <div class="mb-3 ">
-                <label for="password">Password:</label>
-                <input id="password" className="input-text" type="password" value={password} onChange={(e) => setPassword(e.target.value)} placeholder="Password" />
-            </div>
-            <div class="mb-3 ">
-                <button type="submit">Submit</button>
-            </div>
+                <div className="mb-3">
+                    <label htmlFor="username">Username:</label>
+                    <input id="username" className="input-text" type="text" value={username} onChange={(e) => setUsername(e.target.value)} placeholder="Username" />
+                </div>
+                <div className="mb-3">
+                    <label htmlFor="password">Password:</label>
+                    <input id="password" className="input-text" type="password" value={password} onChange={(e) => setPassword(e.target.value)} placeholder="Password" />
+                </div>
+                <div className="mb-3">
+                    <Button type="submit">Submit</Button>
+                </div>
             </form>
-        </>
+        </Card>
     )
 }
 

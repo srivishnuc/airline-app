@@ -70,11 +70,6 @@
   ],
   "services": [
     {
-      "flight": "S0001",
-      "service": "Non-Veg Meals",
-      "id": 5
-    },
-    {
       "service": "Shopping Item 1",
       "flight": "S0001",
       "id": 9
@@ -141,7 +136,7 @@
   ],
   "checkin": [
     {
-      "passenger": "P001",
+      "passenger": 1,
       "seatno": "S4",
       "isCheckedIn": true,
       "services": [
@@ -150,7 +145,7 @@
       "mealsPreference": "Veg"
     },
     {
-      "passenger": "P002",
+      "passenger": 2,
       "seatno": "S5",
       "isCheckedIn": false,
       "services": [
@@ -160,7 +155,7 @@
       "mealsPreference": "Non-Veg"
     },
     {
-      "passenger": "P003",
+      "passenger": 3,
       "seatno": "S1",
       "isCheckedIn": true,
       "services": [
@@ -169,7 +164,7 @@
       "mealsPreference": "Non-Veg"
     },
     {
-      "passenger": "P004",
+      "passenger": 4,
       "seatno": "S2",
       "isCheckedIn": false,
       "services": [

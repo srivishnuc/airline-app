@@ -15,22 +15,22 @@ const App = () => {
         <div className="container">
             <Header />
             <main>
-            <Routes>
-                <Route path="/" element={<SignIn />} />
-                <Route path="staff" >
-                    <Route index element={<AirlineStaff />} />
-                    <Route path="checkin" element={<StaffCheckIn />} />
-                    <Route path="inflight" element={<StaffInFlight />} />
-                </Route>
-                <Route path="admin"  >
-                    <Route index element={<AirlineAdmin />} />
-                    <Route path="passenger" element={<AdminManagePassenger />} />
-                    <Route path="ancillary" element={<AdminManageAncillary />} />
-                </Route>
-            </Routes>
+                <Routes>
+                    <Route path="/" element={<SignIn />} />
+                    <Route path="staff" >
+                        <Route index element={<AirlineStaff />} />
+                        <Route path="checkin" element={<StaffCheckIn />} />
+                        <Route path="inflight" element={<StaffInFlight />} />
+                    </Route>
+                    <Route path="admin"  >
+                        <Route index element={<AirlineAdmin />} />
+                        <Route path="passenger" element={<AdminManagePassenger />} />
+                        <Route path="ancillary" element={<AdminManageAncillary />} />
+                    </Route>
+                </Routes>
             </main>
-            <footer class="bg-light text-center text-lg-start mt-3">
-                <div class="text-center p-3">
+            <footer className="bg-light text-center text-lg-start mt-3">
+                <div className="text-center p-3">
                     &copy; 2022 Copyright: SV Airlines
                 </div>
             </footer>

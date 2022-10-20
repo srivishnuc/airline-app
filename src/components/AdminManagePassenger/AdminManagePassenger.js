@@ -53,8 +53,8 @@ const AdminManagePassenger = () => {
     return (
         <>
             <BackButton />
-            <h1 class="fs-3">Manage Passenger</h1>
-            <h2 class="fs-5">Passengers List</h2>
+            <h1 className="fs-3">Manage Passenger</h1>
+            <h2 className="fs-5">Passengers List</h2>
             <Card>
                 {isError && <Alert variant="danger">Enter all required passenger details</Alert>}
                 <Table striped role="presentation">
@@ -65,7 +65,7 @@ const AdminManagePassenger = () => {
                                 {isAddPassenger && <select onChange={(e) => { setFlight(e.target.value) }}>{admin.flights.map(flight => <option key={flight.id} value={flight.value} >{flight.name}</option>)}</select>}
                             </td>
                             <td>
-                                {isAddPassenger && <input type="text" placeholder="Name" value={name} onChange={e => setName(e.target.value)} />} 
+                                {isAddPassenger && <input type="text" placeholder="Name" value={name} onChange={e => setName(e.target.value)} />}
                             </td>
                             <td>
                                 {isAddPassenger && <input type="text" placeholder="Passport No" value={passNo} onChange={e => setPassNo(e.target.value)} />}
