@@ -70,11 +70,6 @@
   ],
   "services": [
     {
-      "service": "Shopping Item 1",
-      "flight": "S0001",
-      "id": 9
-    },
-    {
       "service": "Shopping Item 2",
       "flight": "S0001",
       "id": 10
@@ -88,6 +83,16 @@
       "flight": "S0001",
       "service": "Wheel Chair",
       "id": 12
+    },
+    {
+      "flight": "S0001",
+      "service": "asdsa",
+      "id": 13
+    },
+    {
+      "flight": "test",
+      "service": "test1",
+      "id": 14
     }
   ],
   "passengers": [
@@ -132,6 +137,13 @@
       "address": "CBe",
       "passportNo": "Testt",
       "id": 6
+    },
+    {
+      "flight": "S0001",
+      "name": "save",
+      "passportNo": "age",
+      "address": "test",
+      "id": 7
     }
   ],
   "checkin": [
@@ -140,7 +152,7 @@
       "seatno": "S4",
       "isCheckedIn": true,
       "services": [
-        "Wheelchair"
+        12
       ],
       "mealsPreference": "Veg"
     },
@@ -149,8 +161,8 @@
       "seatno": "S5",
       "isCheckedIn": false,
       "services": [
-        "Infant",
-        "Baggage"
+        11,
+        13
       ],
       "mealsPreference": "Non-Veg"
     },
@@ -159,7 +171,7 @@
       "seatno": "S1",
       "isCheckedIn": true,
       "services": [
-        "Wheelchair"
+        12
       ],
       "mealsPreference": "Non-Veg"
     },
@@ -168,7 +180,7 @@
       "seatno": "S2",
       "isCheckedIn": false,
       "services": [
-        "Lounge access"
+        10
       ],
       "mealsPreference": "Veg"
     }
