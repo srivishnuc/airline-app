@@ -45,7 +45,7 @@ const StaffInFlight = () => {
                         </tr>
                     </thead>
                     <tbody>
-                        {passengerInFlightDetails.map(inflt => <StaffInFlightDetails key={inflt.id} flight={inflt.flight} name={inflt.name} mealsPreference={inflt.mealsPreference} services={inflt.services} />)}
+                        {passengerDetails.map(passenger => <StaffInFlightDetails key={passenger.id} flight={passenger.flight} name={passenger.name} checkInDetails={checkInDetails.filter((chckin=> chckin.passenger === passenger.id))} />)}
                     </tbody>
                 </Table>
             </Card>

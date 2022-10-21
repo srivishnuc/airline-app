@@ -8,7 +8,6 @@ import { useDispatch, useSelector } from 'react-redux'
 import PassengerCheckInDetails from './PassengerCheckInDetails'
 import Table from 'react-bootstrap/table'
 import Card from 'react-bootstrap/Card'
-import Placeholder from 'react-bootstrap/Placeholder'
 
 const StaffCheckIn = () => {
     useAuthentication('staff')
@@ -18,7 +17,8 @@ const StaffCheckIn = () => {
     const [selectedFlight, setFlight] = useState('')
     const [checkedIn, setCheckedIn] = useState('')
     const [service, setService] = useState('')
-    const [allDetails, setAllDetails] = useState([])
+    const [allpassenger, setAllPassenger] = useState(admin.passengers)
+    const [allCheckIn, setAllCheckIn] = useState(checkInDetails)
 
     useEffect(() => {
         dispatch(getPassengers())
@@ -26,26 +26,15 @@ const StaffCheckIn = () => {
         dispatch(getFlights())
         dispatch(getServices())
     }, [])
-
-
-    let passengerCheckInDetails = []
-    for (let i = 0; i < admin.passengers.length; i++) {
-        checkInDetails.forEach(chckDetails => {
-            if (chckDetails.passenger === admin.passengers[i].id) {
-                passengerCheckInDetails.push({
-                    ...admin.passengers[i],
-                    ...chckDetails
-                })
-            }
-        })
-    }
-
+ 
     const handleFilter = () => {
-        setAllDetails(passengerCheckInDetails.filter(passenger => passenger.isCheckedIn === (checkedIn === 'Y') ? true : false))
+      
+         
     }
 
     return (
         <>
+        {   console.log(allpassenger)}
             <BackButton />
             <h1 className="fs-3">Check In</h1>
             <h2 className="fs-5">Check In Details</h2>
@@ -79,7 +68,7 @@ const StaffCheckIn = () => {
                         </tr>
                     </thead>
                     <tbody>
-                        {allDetails.map((passenger, index) => <PassengerCheckInDetails key={index} flight={passenger.flight} name={passenger.name} isCheckedIn={passenger.isCheckedIn} seatno={passenger.seatno} services={passenger.services} />)}
+                        {allpassenger.map((passenger, index) => <PassengerCheckInDetails key={index} flight={passenger.flight} name={passenger.name}  checkInDetails={allCheckIn.filter((chckin=> chckin.passenger === passenger.id))} />)}
                     </tbody>
                 </Table>
             </Card>

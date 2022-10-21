@@ -1,8 +1,8 @@
 import React from 'react'
 
 
-const StaffInFlightDetails = ({ flight, name, mealsPreference, services }) => {
-
+const StaffInFlightDetails = ({ flight, name,checkInDetails   }) => {
+    console.log(checkInDetails)
     return (<>
         <tr role="presentation">
             <td>{flight}</td>

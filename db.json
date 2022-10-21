@@ -123,28 +123,7 @@
       "name": "Siva",
       "passportNo": "G27SF",
       "address": "Bangalore"
-    },
-    {
-      "flight": "S0002",
-      "name": "tset",
-      "passportNo": "1asd3",
-      "address": "Tuticorin",
-      "id": 5
-    },
-    {
-      "flight": "S0001",
-      "name": "ascea",
-      "address": "CBe",
-      "passportNo": "Testt",
-      "id": 6
-    },
-    {
-      "flight": "S0001",
-      "name": "save",
-      "passportNo": "age",
-      "address": "test",
-      "id": 7
-    }
+    }     
   ],
   "checkin": [
     {
