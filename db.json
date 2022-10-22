@@ -90,9 +90,14 @@
       "id": 13
     },
     {
-      "flight": "test",
-      "service": "test1",
+      "flight": "S0002",
+      "service": "asdsa",
       "id": 14
+    },
+    {
+      "flight": "S0002",
+      "service": "Veg Meal",
+      "id": 15
     }
   ],
   "passengers": [
@@ -123,45 +128,41 @@
       "name": "Siva",
       "passportNo": "G27SF",
       "address": "Bangalore"
-    }     
+    }
   ],
   "checkin": [
     {
       "passenger": 1,
       "seatno": "S4",
-      "isCheckedIn": true,
+      "isCheckedIn": "Y",
       "services": [
         12
-      ],
-      "mealsPreference": "Veg"
+      ]
     },
     {
       "passenger": 2,
       "seatno": "S5",
-      "isCheckedIn": false,
+      "isCheckedIn": "N",
       "services": [
-        11,
-        13
-      ],
-      "mealsPreference": "Non-Veg"
+        14,
+        15
+      ]
     },
     {
       "passenger": 3,
       "seatno": "S1",
-      "isCheckedIn": true,
+      "isCheckedIn": "N",
       "services": [
         12
-      ],
-      "mealsPreference": "Non-Veg"
+      ]
     },
     {
       "passenger": 4,
       "seatno": "S2",
-      "isCheckedIn": false,
+      "isCheckedIn": "Y",
       "services": [
         10
-      ],
-      "mealsPreference": "Veg"
+      ]
     }
   ]
 }

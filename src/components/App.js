@@ -12,7 +12,7 @@ import AdminManageAncillary from "./AdminManageAncillary/AdminManageAncillary";
 
 const App = () => {
     return (
-        <div className="container">
+        <div className="container-fluid">
             <Header />
             <main>
                 <Routes>
