@@ -48,7 +48,7 @@ const StaffCheckIn = () => {
             return true
         }
     }
-    console.log(filterFlight)
+
 
     useAuthentication('staff')
     const dispatch = useDispatch()
@@ -104,8 +104,6 @@ const StaffCheckIn = () => {
 
     return (
         <>
-            {console.log({ name: 'chk', checkInDetails })}
-            {console.log({ name: 'pass', passengers })}
 
             <BackButton />
             <h1 className="fs-3">Check In</h1>
@@ -136,10 +134,11 @@ const StaffCheckIn = () => {
                             <th>Name</th>
                             <th>Checked In</th>
                             <th>Ancillary Services</th>
+                            <th>Change Status</th>
                         </tr>
                     </thead>
                     <tbody>
-                        {passengers.map((passenger, index) => <PassengerCheckInDetails key={index} flight={passenger.flight} name={passenger.name} checkInDetails={checkInDetails.find(chckin => chckin.passenger === passenger.id)} />)}
+                        {passengers.map((passenger, index) => <PassengerCheckInDetails key={index} flight={passenger.flight} id={passenger.id} name={passenger.name} checkInDetails={checkInDetails.find(chckin => chckin.passenger === passenger.id)} />)}
                     </tbody>
                 </Table>
             </Card>

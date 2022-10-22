@@ -1,5 +1,5 @@
 import { staff_state as initialState } from "../initialState"
-import { CHECKIN, IN_FLIGHT } from "../actionTypes"
+import { URL, CHECKIN, EDIT_CHECKIN } from "../actionTypes"
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
 
@@ -7,13 +7,24 @@ import axios from "axios";
 
 export const getCheckin = createAsyncThunk(CHECKIN, async (payload) => {
     try {
-        const res = await axios.get(`http://localhost:3006/checkin`)
+        const res = await axios.get(`${URL}checkin`)
         return res.data;
     } catch (err) {
         console.log(err);
     }
 })
- 
+
+
+export const editCheckin = createAsyncThunk(EDIT_CHECKIN, async (payload, { dispatch }) => {
+    try {
+        const res = await axios.patch(`${URL}checkin/${payload.id}`, payload.data)
+        dispatch(getCheckin())
+        return res.data;
+    } catch (err) {
+        console.log(err);
+    }
+})
+
 
 export const staff = createSlice({
     name: "STAFF",
@@ -25,9 +36,10 @@ export const staff = createSlice({
         },
         [getCheckin.rejected]: (state) => {
             state.checkin = [];
-        }        
+        }
     }
 })
+
 
 
 export const staffs = staff.reducer

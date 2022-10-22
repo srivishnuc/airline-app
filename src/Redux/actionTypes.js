@@ -8,5 +8,6 @@ export const IN_FLIGHT = "STAFF/INFLIGHT";
 export const DEL_ANCILLARY = "ADMIN/DEL_ANCILLARY";
 export const EDIT_ANCILLARY = 'ADMIN/EDIT_ANCILLARY';
 export const ADD_PASSENGER = 'ADMIN/ADD_PASSENGER';
-export const EDIT_PASSENGER = 'ADMIN/EDIT_PASSENGER'
+export const EDIT_PASSENGER = 'STAFF/EDIT_PASSENGER';
+export const EDIT_CHECKIN = 'PASSENGER/EDIT_CHECKIN';
 export const URL = "http://localhost:3006/";

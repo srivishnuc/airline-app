@@ -137,24 +137,26 @@
       "isCheckedIn": "Y",
       "services": [
         12
-      ]
+      ],
+      "id": 1
     },
     {
       "passenger": 2,
-      "seatno": "S5",
-      "isCheckedIn": "N",
+      "seatno": "S3",
+      "isCheckedIn": "Y",
       "services": [
-        14,
-        15
-      ]
+        12
+      ],
+      "id": 2
     },
     {
       "passenger": 3,
       "seatno": "S1",
-      "isCheckedIn": "N",
+      "isCheckedIn": "Y",
       "services": [
         12
-      ]
+      ],
+      "id": 3
     },
     {
       "passenger": 4,
@@ -162,7 +164,8 @@
       "isCheckedIn": "Y",
       "services": [
         10
-      ]
+      ],
+      "id": 4
     }
   ]
 }

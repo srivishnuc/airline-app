@@ -1,9 +1,10 @@
 import React from "react";
 import { useSelector } from "react-redux";
+import { editCheckin } from "../../Redux/Reducer/staff"
+import { useDispatch } from "react-redux";
 
-
-
-const PassengerCheckInDetails = ({ flight, name, checkInDetails }) => {
+const PassengerCheckInDetails = ({ flight, name, checkInDetails, id }) => {
+    const dispatch = useDispatch()
     const services = useSelector(state => state.admins.services)
     const servicesList = checkInDetails !== undefined ?
         checkInDetails.services.map((service, index) => {
@@ -15,6 +16,9 @@ const PassengerCheckInDetails = ({ flight, name, checkInDetails }) => {
             )
         }) : <span></span>
 
+    const toggleCheckin = () => {
+        dispatch(editCheckin({ id, data: { isCheckedIn: checkInDetails.isCheckedIn === "Y" ? "N" : "Y" } }))
+    }
 
     return (
         <tr role="presentation">
@@ -23,7 +27,8 @@ const PassengerCheckInDetails = ({ flight, name, checkInDetails }) => {
             <td>{name}</td>
             <td>{checkInDetails?.isCheckedIn}</td>
             <td>{servicesList}</td>
-        </tr>
+            <td><button onClick={toggleCheckin}>Toggle Checkin</button></td>
+        </tr >
     )
 }
 
