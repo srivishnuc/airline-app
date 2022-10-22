@@ -3,7 +3,7 @@ import './StaffInFlight.scss'
 import BackButton from "../ResusableComponents/BackButton";
 import { useAuthentication } from "../../customHooks/useAuthentication"
 import { useDispatch, useSelector } from 'react-redux'
-import { getPassengers } from '../../Redux/Reducer/admin'
+import { getPassengers, getServices } from '../../Redux/Reducer/admin'
 import { getCheckin } from '../../Redux/Reducer/staff'
 import StaffInFlightDetails from './StaffInFlightDetails'
 import Table from 'react-bootstrap/Table'
@@ -18,18 +18,9 @@ const StaffInFlight = () => {
     useEffect(() => {
         dispatch(getPassengers())
         dispatch(getCheckin())
+        dispatch(getServices())
     }, [])
-    let passengerInFlightDetails = []
-    for (let i = 0; i < passengerDetails.length; i++) {
-        checkInDetails.forEach(chckDetails => {
-            if (chckDetails.passenger === passengerDetails[i].id) {
-                passengerInFlightDetails.push({
-                    ...passengerDetails[i],
-                    ...chckDetails
-                })
-            }
-        })
-    }
+
     return (
         <>
             <BackButton />
@@ -45,7 +36,7 @@ const StaffInFlight = () => {
                         </tr>
                     </thead>
                     <tbody>
-                        {passengerDetails.map(passenger => <StaffInFlightDetails key={passenger.id} flight={passenger.flight} name={passenger.name} checkInDetails={checkInDetails.filter((chckin=> chckin.passenger === passenger.id))} />)}
+                        {passengerDetails.map(passenger => <StaffInFlightDetails key={passenger.id} flight={passenger.flight} name={passenger.name} checkInDetails={checkInDetails.find((chckin => chckin.passenger === passenger.id))} />)}
                     </tbody>
                 </Table>
             </Card>
