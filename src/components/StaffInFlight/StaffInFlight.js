@@ -33,10 +33,11 @@ const StaffInFlight = () => {
                             <th>Flight</th>
                             <th>Name</th>
                             <th>Ancillary Services</th>
+                            <th>Add/Remove Services</th>
                         </tr>
                     </thead>
                     <tbody>
-                        {passengerDetails.map(passenger => <StaffInFlightDetails key={passenger.id} flight={passenger.flight} name={passenger.name} checkInDetails={checkInDetails.find((chckin => chckin.passenger === passenger.id))} />)}
+                        {passengerDetails.map(passenger => <StaffInFlightDetails key={passenger.id} id={passenger.id} flight={passenger.flight} name={passenger.name} checkInDetails={checkInDetails.find((chckin => chckin.passenger === passenger.id))} />)}
                     </tbody>
                 </Table>
             </Card>
