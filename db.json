@@ -98,6 +98,11 @@
       "flight": "S0002",
       "service": "Veg Meal",
       "id": 15
+    },
+    {
+      "flight": "S0002",
+      "service": "Lounge Acess",
+      "id": 16
     }
   ],
   "passengers": [
@@ -128,6 +133,13 @@
       "name": "Siva",
       "passportNo": "G27SF",
       "address": "Bangalore"
+    },
+    {
+      "flight": "S0002",
+      "name": "TN69",
+      "address": "Coimbatore",
+      "passportNo": "er1234",
+      "id": 5
     }
   ],
   "checkin": [
@@ -146,8 +158,8 @@
       "seatno": "S3",
       "isCheckedIn": "Y",
       "services": [
-        15,
-        14
+        14,
+        15
       ],
       "id": 2
     },
@@ -156,7 +168,8 @@
       "seatno": "S1",
       "isCheckedIn": "Y",
       "services": [
-        11
+        11,
+        10
       ],
       "id": 3
     },

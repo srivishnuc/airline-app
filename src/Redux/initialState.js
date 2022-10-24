@@ -1,4 +1,3 @@
-export const user_state = { user: {}, msg: "" }
-export const admin_state = { services: [], passengers: [], flights: [] }
-export const staff_state = { checkin: [] }
-
+export const userState = { user: {}, msg: '' };
+export const adminState = { services: [], passengers: [], flights: [] };
+export const staffState = { checkin: [] };
