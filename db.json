@@ -163,7 +163,7 @@
     {
       "passenger": 4,
       "seatno": "S2",
-      "isCheckedIn": "Y",
+      "isCheckedIn": "N",
       "services": [
         12,
         13

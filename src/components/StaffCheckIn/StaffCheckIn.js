@@ -111,7 +111,7 @@ const StaffCheckIn = () => {
 
             <select onChange={e => { setFlight(e.target.value) }}>
                 <option value="">Select Flight</option>
-                {flights.map(flight => <option key={flight.id} value={flight.value}>{flight.name}</option>)}
+                {flights.map(flight => <option key={flight.id} value={flight.id}>{flight.name}</option>)}
             </select>
 
             <select onChange={e => { setCheckedIn(e.target.value) }}>

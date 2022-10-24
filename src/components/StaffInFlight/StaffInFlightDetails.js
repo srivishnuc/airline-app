@@ -10,7 +10,7 @@ const StaffInFlightDetails = ({ flight, name, checkInDetails, id }) => {
     const [modifyServices, setModifyServices] = useState(false)
     const [selectedOption, setSelectedOption] = useState(null);
     const [updateBtn, toggleBtn] = useState(true);
-    console.log(selectedOption)
+
     const services = useSelector(state => state.admins.services)
     const options = services.filter(service => service.flight === flight).map(
         ser => ({ label: ser.service, value: ser.id })
