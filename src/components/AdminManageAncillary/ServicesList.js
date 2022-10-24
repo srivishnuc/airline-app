@@ -77,7 +77,7 @@ const ServiceList = ({ flight, service, id, setError }) => {
 ServiceList.propTypes = {
  flight: PropTypes.string,
  service: PropTypes.string,
- id: PropTypes.string,
+ id: PropTypes.number,
  setError: PropTypes.func
 };
 

@@ -72,9 +72,10 @@ export const editAncillary = createAsyncThunk(EDIT_ANCILLARY, async (payload, { 
 
 export const postPassenger = createAsyncThunk(ADD_PASSENGER, async (payload, { dispatch }) => {
  try {
-  const res = await axios.post(`${URL}passengers`, payload);
+  const passegerRes = await axios.post(`${URL}passengers`, payload);
+  const checkinRes = await axios.post(`${URL}checkin`, payload.checkin);
   dispatch(getPassengers());
-  return res.data;
+  return { passegerRes, checkinRes };
  } catch (err) {
   console.log(err);
  }

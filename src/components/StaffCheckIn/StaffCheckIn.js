@@ -157,7 +157,7 @@ const StaffCheckIn = () => {
         flight={passenger.flight}
         id={passenger.id}
         name={passenger.name}
-        checkInDetails={checkInDetails.find((chckin) => chckin.passenger === passenger.id)}
+        checkInDetails={checkInDetails.find((chckin) => chckin.id === passenger.id)}
        />
       ))}
      </tbody>

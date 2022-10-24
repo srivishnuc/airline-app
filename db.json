@@ -135,18 +135,22 @@
       "address": "Bangalore"
     },
     {
-      "flight": "S0002",
-      "name": "TN69",
-      "address": "Coimbatore",
-      "passportNo": "er1234",
+      "flight": "S0001",
+      "name": "TN72",
+      "passportNo": "ASDE",
+      "address": "CBE",
+      "checkin": {
+        "isCheckedIn": "N",
+        "services": [],
+        "seatno": "S"
+      },
       "id": 5
     }
   ],
   "checkin": [
     {
-      "passenger": 1,
       "seatno": "S4",
-      "isCheckedIn": "N",
+      "isCheckedIn": "Y",
       "services": [
         10,
         13
@@ -154,7 +158,6 @@
       "id": 1
     },
     {
-      "passenger": 2,
       "seatno": "S3",
       "isCheckedIn": "Y",
       "services": [
@@ -164,7 +167,6 @@
       "id": 2
     },
     {
-      "passenger": 3,
       "seatno": "S1",
       "isCheckedIn": "Y",
       "services": [
@@ -174,7 +176,6 @@
       "id": 3
     },
     {
-      "passenger": 4,
       "seatno": "S2",
       "isCheckedIn": "N",
       "services": [
@@ -182,6 +183,15 @@
         13
       ],
       "id": 4
+    },
+    {
+      "isCheckedIn": "N",
+      "services": [
+        11,
+        13
+      ],
+      "seatno": "S",
+      "id": 5
     }
   ]
 }

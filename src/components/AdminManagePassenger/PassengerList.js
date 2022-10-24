@@ -109,7 +109,7 @@ const PassengerList = ({ flight, id, name, passno, address, setError }) => {
 
 PassengerList.propTypes = {
  flight: PropTypes.string,
- id: PropTypes.string,
+ id: PropTypes.number,
  name: PropTypes.string,
  passno: PropTypes.string,
  address: PropTypes.string,

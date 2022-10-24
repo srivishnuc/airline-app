@@ -31,7 +31,15 @@ const AdminManagePassenger = () => {
    setFlight(admin.flights[0].name);
   } else {
    if (name && passNo && address) {
-    dispatch(postPassenger({ flight: selectedFlight, name, passportNo: passNo, address }));
+    dispatch(
+     postPassenger({
+      flight: selectedFlight,
+      name,
+      passportNo: passNo,
+      address,
+      checkin: { isCheckedIn: 'N', services: [], seatno: 'S' }
+     })
+    );
     setAddPassenger(false);
     setError(false);
     setName('');
