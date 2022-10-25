@@ -102,44 +102,50 @@ const StaffCheckIn = () => {
  return (
   <>
    <BackButton />
-   <h1 className="fs-3">Check In</h1>
-   <h2 className="fs-5">Check In Details</h2>
-
-   <select
-    onChange={(e) => {
-     setFlight(e.target.value);
-    }}>
-    <option value="">Select Flight</option>
-    {flights.map((flight) => (
-     <option key={flight.id} value={flight.id}>
-      {flight.name}
-     </option>
-    ))}
-   </select>
-
-   <select
-    onChange={(e) => {
-     setCheckedIn(e.target.value);
-    }}>
-    <option value="">CheckIn</option>
-    <option value="Y">Yes</option>
-    <option value="N">No</option>
-   </select>
-
-   <select
-    onChange={(e) => {
-     setService(e.target.value);
-    }}>
-    <option value="">Select Servies</option>
-    {services.map((service) => (
-     <option key={service.id} value={service.id}>
-      {service.service}
-     </option>
-    ))}
-   </select>
-
+   <h1 className="fs-3 text-center text-dark">Check In</h1>
+   <h2 className="fs-5 text-center text-dark">Check In Details</h2>
    <Card>
+    <p className="h5 m-2">Filter Passenger details</p>
+    <div className="d-flex">
+     <select
+      className="form-control w-25 m-3"
+      onChange={(e) => {
+       setFlight(e.target.value);
+      }}>
+      <option value="">Select Flight</option>
+      {flights.map((flight) => (
+       <option key={flight.id} value={flight.id}>
+        {flight.name}
+       </option>
+      ))}
+     </select>
+     <select
+      className="form-control w-25 m-3"
+      onChange={(e) => {
+       setCheckedIn(e.target.value);
+      }}>
+      <option value="">CheckIn</option>
+      <option value="Y">Yes</option>
+      <option value="N">No</option>
+     </select>
+
+     <select
+      className="form-control w-25 m-3"
+      onChange={(e) => {
+       setService(e.target.value);
+      }}>
+      <option value="">Select Servies</option>
+      {services.map((service) => (
+       <option key={service.id} value={service.id}>
+        {service.service}
+       </option>
+      ))}
+     </select>
+    </div>
+   </Card>
+   <Card className="mt-1">
     <Table>
+     <caption className="m-1">List of Passenger checkin details</caption>
      <thead>
       <tr>
        <th>Flight</th>

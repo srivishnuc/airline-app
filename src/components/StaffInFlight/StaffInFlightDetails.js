@@ -61,13 +61,17 @@ const StaffInFlightDetails = ({ flight, name, checkInDetails, id }) => {
      {modifyServices ? (
       <>
        <Select defaultValue={selectedOption} onChange={setChange} options={options} isMulti />
-       <button onClick={modifyService} disabled={updateBtn}>
+       <button className="btn btn-outline-info" onClick={modifyService} disabled={updateBtn}>
         Update
        </button>
-       <button onClick={hideModify}>Cancel</button>
+       <button className="btn btn-outline-danger" onClick={hideModify}>
+        Cancel
+       </button>
       </>
      ) : (
-      <button onClick={showModify}>Modify</button>
+      <button className="btn btn-outline-info" onClick={showModify}>
+       Modify
+      </button>
      )}
     </td>
    </tr>

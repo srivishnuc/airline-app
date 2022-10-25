@@ -47,8 +47,8 @@ const AdminManageAncillary = () => {
  return (
   <>
    <BackButton />
-   <h1 className="fs-3">Manage Ancillary Services</h1>
-   <h2 className="fs-5">Ancillary Services List</h2>
+   <h1 className="fs-3 text-dark text-center">Manage Ancillary Services</h1>
+   <h2 className="fs-5 text-dark text-center">Ancillary Services List</h2>
    <Card className="mange-ancillary">
     {isError && <Alert variant="danger">Enter Ancillary Services</Alert>}
     <Table striped>
@@ -58,6 +58,7 @@ const AdminManageAncillary = () => {
        <td>
         {isAddServices && (
          <select
+          className="form-control"
           onChange={(e) => {
            setFlight(e.target.value);
           }}>
@@ -73,6 +74,7 @@ const AdminManageAncillary = () => {
         {isAddServices && (
          <input
           type="text"
+          className="form-control"
           onChange={(e) => {
            setError(false);
            setNewService(e.target.value);
@@ -84,12 +86,16 @@ const AdminManageAncillary = () => {
        </td>
        <td>
         <span>
-         <button onClick={AddServices}>{isAddServices ? 'Add' : 'Add Service'}</button>
+         <button className="btn btn-outline-info" onClick={AddServices}>
+          {isAddServices ? 'Add' : 'Add Service'}
+         </button>
         </span>
         &nbsp;{' '}
         {isAddServices && (
          <span>
-          <button onClick={cancelAdd}>&nbsp;Cancel</button>
+          <button className="btn btn-outline-danger" onClick={cancelAdd}>
+           &nbsp;Cancel
+          </button>
          </span>
         )}
        </td>

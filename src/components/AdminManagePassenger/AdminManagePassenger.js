@@ -61,8 +61,8 @@ const AdminManagePassenger = () => {
  return (
   <>
    <BackButton />
-   <h1 className="fs-3">Manage Passenger</h1>
-   <h2 className="fs-5">Passengers List</h2>
+   <h1 className="fs-3 text-center text-dark">Manage Passenger</h1>
+   <h2 className="fs-5 text-center text-dark">Passengers List</h2>
    <Card>
     {isError && <Alert variant="danger">Enter all required passenger details</Alert>}
     <Table striped role="presentation">
@@ -72,6 +72,7 @@ const AdminManagePassenger = () => {
        <td>
         {isAddPassenger && (
          <select
+          className="form-control"
           onChange={(e) => {
            setFlight(e.target.value);
           }}>
@@ -87,6 +88,7 @@ const AdminManagePassenger = () => {
         {isAddPassenger && (
          <input
           type="text"
+          className="form-control"
           placeholder="Name"
           value={name}
           onChange={(e) => setName(e.target.value)}
@@ -97,6 +99,7 @@ const AdminManagePassenger = () => {
         {isAddPassenger && (
          <input
           type="text"
+          className="form-control"
           placeholder="Passport No"
           value={passNo}
           onChange={(e) => setPassNo(e.target.value)}
@@ -107,6 +110,7 @@ const AdminManagePassenger = () => {
         {isAddPassenger && (
          <input
           type="text"
+          className="form-control"
           placeholder="Address"
           value={address}
           onChange={(e) => setAddress(e.target.value)}
@@ -115,12 +119,16 @@ const AdminManagePassenger = () => {
        </td>
        <td>
         <span>
-         <button onClick={addPassenger}>{isAddPassenger ? 'Add' : 'Add Passenger'}</button>
+         <button className="btn btn-outline-info" onClick={addPassenger}>
+          {isAddPassenger ? 'Add' : 'Add Passenger'}
+         </button>
         </span>
         &nbsp;{' '}
         {isAddPassenger && (
          <span>
-          <button onClick={cancelAdd}>&nbsp;Cancel</button>
+          <button className="btn btn-outline-danger" onClick={cancelAdd}>
+           &nbsp;Cancel
+          </button>
          </span>
         )}
        </td>

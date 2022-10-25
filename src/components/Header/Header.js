@@ -12,11 +12,21 @@ const Header = () => {
   else navigate('/admin');
  };
  return (
-  <header className="header">
-   <div className="fs-1 text-white fw-bold" onClick={handleNavigate}>
-    <img src={logo} alt="Airlines logo" width="50rem" height="50rem" /> SV Airline
+  <header className="row bg-info text-center">
+   <div
+    className="row no-gutters col-12 align-items-center fs-1 text-white fw-bold"
+    onClick={handleNavigate}>
+    <img
+     className="col align-middle"
+     role="button"
+     width="75rem"
+     height="75rem"
+     src={logo}
+     alt="Airlines logo"
+    />
+    <span className="col-10 text-dark cursor-default">SV Airline</span>
+    <Logout />
    </div>
-   <Logout />
   </header>
  );
 };

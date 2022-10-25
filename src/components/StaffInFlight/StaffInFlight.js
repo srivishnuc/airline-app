@@ -28,22 +28,29 @@ const StaffInFlight = () => {
  return (
   <>
    <BackButton />
-   <h1 className="fs-3">In Flight</h1>
-   <h2 className="fs-5">In Flight Details</h2>
-   <select
-    value={selectedFlight}
-    onChange={(e) => {
-     setFlight(e.target.value);
-    }}>
-    <option value="">Select Flight</option>
-    {flights.map((flight) => (
-     <option key={flight.id} value={flight.id}>
-      {flight.name}{' '}
-     </option>
-    ))}
-   </select>
+   <h1 className="fs-3 text-center text-dark">In Flight</h1>
+   <h2 className="fs-5 text-center text-dark">In Flight Details</h2>
+   <Card className="mb-1">
+    <p className="h5 m-2">Filter Passenger details</p>
+    <div className="d-flex">
+     <select
+      className="form-control w-25 m-1 mb-3"
+      value={selectedFlight}
+      onChange={(e) => {
+       setFlight(e.target.value);
+      }}>
+      <option value="">Select Flight</option>
+      {flights.map((flight) => (
+       <option key={flight.id} value={flight.id}>
+        {flight.name}{' '}
+       </option>
+      ))}
+     </select>
+    </div>
+   </Card>
    <Card>
     <Table>
+     <caption className="m-1">Passenger service details</caption>
      <thead>
       <tr>
        <th>Flight</th>

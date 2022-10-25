@@ -36,7 +36,13 @@ const PassengerCheckInDetails = ({ flight, name, checkInDetails, id }) => {
    <td>{checkInDetails?.isCheckedIn}</td>
    <td>{servicesList}</td>
    <td>
-    <button onClick={toggleCheckin}>Toggle Checkin</button>
+    <button
+     className={
+      checkInDetails?.isCheckedIn === 'N' ? 'btn btn-outline-success' : 'btn btn-outline-danger'
+     }
+     onClick={toggleCheckin}>
+     {checkInDetails?.isCheckedIn === 'N' ? 'Check-in' : 'Check-out'}
+    </button>
    </td>
   </tr>
  );

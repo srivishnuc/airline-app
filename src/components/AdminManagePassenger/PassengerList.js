@@ -31,6 +31,7 @@ const PassengerList = ({ flight, id, name, passno, address, setError }) => {
    <td>
     {editPassenger ? (
      <select
+      className="form-control w-75"
       onChange={(e) => {
        setFlight(e.target.value);
       }}>
@@ -48,6 +49,7 @@ const PassengerList = ({ flight, id, name, passno, address, setError }) => {
     {editPassenger ? (
      <input
       type="text"
+      className="form-control w-50"
       value={psname}
       onChange={(e) => {
        setName(e.target.value);
@@ -61,6 +63,7 @@ const PassengerList = ({ flight, id, name, passno, address, setError }) => {
     {editPassenger ? (
      <input
       type="text"
+      className="form-control w-50"
       value={pspno}
       onChange={(e) => {
        setPassno(e.target.value);
@@ -74,6 +77,7 @@ const PassengerList = ({ flight, id, name, passno, address, setError }) => {
     {editPassenger ? (
      <input
       type="text"
+      className="form-control w-50"
       value={psadd}
       onChange={(e) => {
        setAddress(e.target.value);
@@ -85,13 +89,13 @@ const PassengerList = ({ flight, id, name, passno, address, setError }) => {
    </td>
    <td>
     {
-     <button className="btn btn-link" onClick={updatePassenger}>
+     <button className="btn btn-outline-info" onClick={updatePassenger}>
       {editPassenger ? 'Update' : 'Edit'}
      </button>
     }
     {editPassenger && (
      <button
-      className="btn btn-link"
+      className="btn btn-outline-danger"
       onClick={() => {
        setName(name);
        setPassno(passno);

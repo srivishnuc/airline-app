@@ -10,7 +10,17 @@ const Logout = () => {
   dispatch(userLogout());
   navigate('/');
  };
- return <img onClick={handleLogout} src={logout} alt="logo" width="50rem" height="50rem" />;
+ return (
+  <img
+   role="button"
+   className="col align-items-start"
+   onClick={handleLogout}
+   src={logout}
+   alt="logo"
+   width="65rem"
+   height="65rem"
+  />
+ );
 };
 
 export default Logout;

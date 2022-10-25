@@ -1,31 +1,14 @@
+@import '~bootstrap/scss/bootstrap-utilities';
+
+//Generate utilites for Cursor
+$utilities: map-merge(
+ $utilities,
+ (
+  'cursor': (
+   property: cursor,
+   values: auto default pointer wait text move help not-allowed
+  )
+ )
+);
+
 @import '~bootstrap/scss/bootstrap';
-
-.container-fluid {
- h2 {
-  margin: 1rem 0;
- }
-
- .back-btn {
-  border: 1px solid black;
-  border-radius: 5px;
-  padding: 10px;
-  color: white;
-  background: blue;
- }
-
- .link-container {
-  display: flex;
-  align-items: center;
-  justify-content: space-evenly;
-  height: 75vh;
-
-  .link {
-   border: 1px solid black;
-   border-radius: 5px;
-   padding: 10px;
-   color: white;
-   background: orange;
-   text-decoration: none;
-  }
- }
-}
