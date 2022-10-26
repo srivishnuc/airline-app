@@ -11,8 +11,6 @@ import { staffs } from './Redux/Reducer/staff';
 const store = configureStore({
  reducer: { users, admins, staffs }
 });
-// Webpack hot module replacement
-if (module.hot) module.hot.accept();
 
 const container = document.getElementById('app');
 const root = createRoot(container);
@@ -23,3 +21,6 @@ root.render(
   </Router>
  </Provider>
 );
+
+// Webpack hot module replacement
+if (module.hot) module.hot.accept();

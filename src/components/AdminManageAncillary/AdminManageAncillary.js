@@ -49,7 +49,7 @@ const AdminManageAncillary = () => {
    <BackButton />
    <h1 className="fs-3 text-dark text-center">Manage Ancillary Services</h1>
    <h2 className="fs-5 text-dark text-center">Ancillary Services List</h2>
-   <Card className="mange-ancillary">
+   <Card className="mange-ancillary table-responsive">
     {isError && <Alert variant="danger">Enter Ancillary Services</Alert>}
     <Table striped>
      <caption>List of Ancillary Services</caption>

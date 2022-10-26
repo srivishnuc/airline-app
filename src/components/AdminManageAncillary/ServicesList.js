@@ -38,11 +38,11 @@ const ServiceList = ({ flight, service, id, setError }) => {
         setEditVal(e.target.value);
        }}
       />
-      <button className="btn btn-outline-info" onClick={updateService}>
+      <button className="btn btn-outline-info btn-sm" onClick={updateService}>
        Update
       </button>
       <button
-       className="btn btn-outline-danger"
+       className="btn btn-outline-danger btn-sm"
        onClick={() => {
         setisEdit(false);
         setEditVal(service);
@@ -58,14 +58,14 @@ const ServiceList = ({ flight, service, id, setError }) => {
    <td>
     <span>
      {' '}
-     <button className="btn btn-outline-info" onClick={EditServices}>
+     <button className="btn btn-outline-info btn-sm" onClick={EditServices}>
       {' '}
       Edit
      </button>
     </span>
     <span>
      {' '}
-     <button className="btn btn-outline-danger" onClick={DeleteServices}>
+     <button className="btn btn-outline-danger btn-sm" onClick={DeleteServices}>
       {' '}
       Delete
      </button>

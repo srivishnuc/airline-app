@@ -1,5 +1,5 @@
 import React from 'react';
-import logout from '../../../public/images/logout.png';
+import logout from '../../../public/images/log-out.svg';
 import { useNavigate } from 'react-router-dom';
 import { LOGOUT as userLogout } from '../../Redux/Reducer/user';
 import { useDispatch } from 'react-redux';
@@ -13,12 +13,12 @@ const Logout = () => {
  return (
   <img
    role="button"
-   className="col align-items-start"
+   className="col-2 col-md-1 align-items-start"
    onClick={handleLogout}
    src={logout}
    alt="logo"
-   width="65rem"
-   height="65rem"
+   height="40"
+   width="40"
   />
  );
 };

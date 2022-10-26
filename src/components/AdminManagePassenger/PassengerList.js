@@ -89,13 +89,13 @@ const PassengerList = ({ flight, id, name, passno, address, setError }) => {
    </td>
    <td>
     {
-     <button className="btn btn-outline-info" onClick={updatePassenger}>
+     <button className="btn btn-outline-info btn-sm" onClick={updatePassenger}>
       {editPassenger ? 'Update' : 'Edit'}
      </button>
     }
     {editPassenger && (
      <button
-      className="btn btn-outline-danger"
+      className="btn btn-outline-danger btn-sm"
       onClick={() => {
        setName(name);
        setPassno(passno);

@@ -46,8 +46,8 @@ const SignIn = () => {
  };
 
  return (
-  <div className="row justify-content-center">
-   <div className="col-3 mt-3 align-items-center">
+  <div className="row justify-content-center vh-75">
+   <div className="col-12 col-md-8 col-xl-4 mt-3 align-items-center">
     <h1 className="fs-3 mt-3 text-dark text-center cursor-default">Sign In Page</h1>
     <h2 className="fs-5 text-center cursor-default">Enter your Login credentials</h2>
     {error && <Alert variant="danger">Enter valid username/password</Alert>}

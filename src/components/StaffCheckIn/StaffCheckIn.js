@@ -143,7 +143,7 @@ const StaffCheckIn = () => {
      </select>
     </div>
    </Card>
-   <Card className="mt-1">
+   <Card className="table-responsive mt-1">
     <Table>
      <caption className="m-1">List of Passenger checkin details</caption>
      <thead>

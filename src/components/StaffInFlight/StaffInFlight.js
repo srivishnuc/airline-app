@@ -48,7 +48,7 @@ const StaffInFlight = () => {
      </select>
     </div>
    </Card>
-   <Card>
+   <Card className="table-responsive">
     <Table>
      <caption className="m-1">Passenger service details</caption>
      <thead>
