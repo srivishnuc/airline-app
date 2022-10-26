@@ -63,7 +63,7 @@ const AdminManagePassenger = () => {
    <BackButton />
    <h1 className="fs-3 text-center text-dark">Manage Passenger</h1>
    <h2 className="fs-5 text-center text-dark">Passengers List</h2>
-   <Card className="table-responsive">
+   <Card className="manage-passenger table-responsive">
     {isError && <Alert variant="danger">Enter all required passenger details</Alert>}
     <Table striped role="presentation">
      <caption>List of passengers</caption>
