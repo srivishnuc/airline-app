@@ -14,32 +14,32 @@ const StaffCheckIn = () => {
  const checkinFilter = (checkin) => {
   if (selectedFlight === '' && checkedIn === '' && service != '') {
    if (checkin.services.includes(parseInt(service))) {
-    filterPassenger.push(checkin.passenger);
+    filterPassenger.push(checkin.id);
     return true;
    }
   } else if (selectedFlight === '' && checkedIn != '' && service === '') {
    if (checkin.isCheckedIn === checkedIn) {
-    filterPassenger.push(checkin.passenger);
+    filterPassenger.push(checkin.id);
     return true;
    }
   } else if (selectedFlight != '' && checkedIn != '' && service === '') {
    if (checkin.isCheckedIn === checkedIn) {
-    filterPassenger.push(checkin.passenger);
+    filterPassenger.push(checkin.id);
     return true;
    }
   } else if (selectedFlight != '' && checkedIn === '' && service != '') {
    if (checkin.services.includes(parseInt(service))) {
-    filterPassenger.push(checkin.passenger);
+    filterPassenger.push(checkin.id);
     return true;
    }
   } else if (selectedFlight === '' && checkedIn != '' && service != '') {
    if (checkin.isCheckedIn === checkedIn && checkin.services.includes(parseInt(service))) {
-    filterPassenger.push(checkin.passenger);
+    filterPassenger.push(checkin.id);
     return true;
    }
   } else if (selectedFlight != '' && checkedIn != '' && service != '') {
    if (checkin.isCheckedIn === checkedIn && checkin.services.includes(parseInt(service))) {
-    filterPassenger.push(checkin.passenger);
+    filterPassenger.push(checkin.id);
     return true;
    }
   } else {
@@ -57,7 +57,7 @@ const StaffCheckIn = () => {
    if (selectedFlight != '') {
     return service.flight === selectedFlight;
    } else {
-    return true;
+    return false;
    }
   })
  );

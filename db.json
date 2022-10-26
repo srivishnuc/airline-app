@@ -164,7 +164,7 @@
     },
     {
       "seatno": "S3",
-      "isCheckedIn": "N",
+      "isCheckedIn": "Y",
       "services": [
         14,
         15
@@ -182,7 +182,7 @@
     },
     {
       "seatno": "S2",
-      "isCheckedIn": "N",
+      "isCheckedIn": "Y",
       "services": [
         12,
         13
