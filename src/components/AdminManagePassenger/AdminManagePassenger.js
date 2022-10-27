@@ -65,7 +65,7 @@ const AdminManagePassenger = () => {
    <h2 className="fs-5 text-center text-dark">Passengers List</h2>
    <Card className="manage-passenger table-responsive">
     {isError && <Alert variant="danger">Enter all required passenger details</Alert>}
-    <Table striped role="presentation">
+    <Table striped>
      <caption>List of passengers</caption>
      <thead>
       <tr>
@@ -119,7 +119,7 @@ const AdminManagePassenger = () => {
        </td>
        <td>
         <span>
-         <button className="btn btn-outline-info" onClick={addPassenger}>
+         <button className="btn btn-outline-primary" onClick={addPassenger}>
           {isAddPassenger ? 'Add' : 'Add Passenger'}
          </button>
         </span>

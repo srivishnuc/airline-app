@@ -38,7 +38,7 @@ const ServiceList = ({ flight, service, id, setError }) => {
         setEditVal(e.target.value);
        }}
       />
-      <button className="btn btn-outline-info btn-sm" onClick={updateService}>
+      <button className="btn btn-outline-primary btn-sm" onClick={updateService}>
        Update
       </button>
       <button
@@ -58,7 +58,7 @@ const ServiceList = ({ flight, service, id, setError }) => {
    <td>
     <span>
      {' '}
-     <button className="btn btn-outline-info btn-sm" onClick={EditServices}>
+     <button className="btn btn-outline-primary btn-sm" onClick={EditServices}>
       {' '}
       Edit
      </button>

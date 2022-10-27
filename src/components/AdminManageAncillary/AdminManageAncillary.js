@@ -86,7 +86,7 @@ const AdminManageAncillary = () => {
        </td>
        <td>
         <span>
-         <button className="btn btn-outline-info" onClick={AddServices}>
+         <button className="btn btn-outline-primary" onClick={AddServices}>
           {isAddServices ? 'Add' : 'Add Service'}
          </button>
         </span>

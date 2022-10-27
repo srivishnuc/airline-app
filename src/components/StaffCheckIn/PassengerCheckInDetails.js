@@ -29,7 +29,7 @@ const PassengerCheckInDetails = ({ flight, name, checkInDetails, id }) => {
  };
 
  return (
-  <tr role="presentation">
+  <tr>
    <td>{flight}</td>
    <td>{checkInDetails?.seatno}</td>
    <td>{name}</td>

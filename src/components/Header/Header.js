@@ -20,13 +20,12 @@ const Header = () => {
     onClick={handleNavigate}>
     <img
      className="col-2 col-md-1 align-middle"
-     role="button"
      src={logo}
      alt="Airlines logo"
      height="50"
      width="50"
     />
-    <span className="col-8 col-md-10 text-dark cursor-default">SV Airline</span>
+    <span className="col-8 col-md-10 text-dark cursor-default">SV Airlines</span>
     <Logout />
    </div>
   </header>

@@ -103,11 +103,6 @@
       "flight": "S0002",
       "service": "Lounge Acess",
       "id": 16
-    },
-    {
-      "flight": "S0001",
-      "service": "Test31",
-      "id": 17
     }
   ],
   "passengers": [
@@ -142,20 +137,15 @@
     {
       "flight": "S0001",
       "name": "TN72",
+      "address": "CBSE",
       "passportNo": "ASDE",
-      "address": "CBE",
-      "checkin": {
-        "isCheckedIn": "N",
-        "services": [],
-        "seatno": "S"
-      },
       "id": 5
     }
   ],
   "checkin": [
     {
       "seatno": "S4",
-      "isCheckedIn": "N",
+      "isCheckedIn": "Y",
       "services": [
         10,
         13
@@ -173,7 +163,7 @@
     },
     {
       "seatno": "S1",
-      "isCheckedIn": "N",
+      "isCheckedIn": "Y",
       "services": [
         11,
         10

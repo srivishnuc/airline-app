@@ -12,11 +12,10 @@ const Logout = () => {
  };
  return (
   <img
-   role="button"
    className="col-2 col-md-1 align-items-start"
    onClick={handleLogout}
    src={logout}
-   alt="logo"
+   alt="log out"
    height="40"
    width="40"
   />

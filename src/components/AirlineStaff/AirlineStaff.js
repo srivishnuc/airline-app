@@ -12,10 +12,10 @@ const AirlineStaff = () => {
     Choose any service to proceed further
    </h2>
    <div className="link-container d-flex justify-content-around mt-5 mb-5">
-    <Link className="btn btn-outline-info m-1" to="checkin" title="Check In Link">
+    <Link className="btn btn-outline-primary m-1" to="checkin" title="Check In Link">
      Check-In
     </Link>
-    <Link className="btn btn-outline-info m-1" to="inflight" title="In Flight Link">
+    <Link className="btn btn-outline-primary m-1" to="inflight" title="In Flight Link">
      In-Flight
     </Link>
    </div>
