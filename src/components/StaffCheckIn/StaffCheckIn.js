@@ -151,8 +151,8 @@ const StaffCheckIn = () => {
        <th>Flight</th>
        <th>Seat No</th>
        <th>Name</th>
-       <th>Checked In</th>
-       <th>Ancillary Services</th>
+       <th>Status</th>
+       <th>Services</th>
        <th>Change Status</th>
       </tr>
      </thead>

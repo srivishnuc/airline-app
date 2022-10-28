@@ -2,51 +2,15 @@
   "users": [
     {
       "id": 1,
-      "username": "vishnu",
-      "password": "u",
+      "username": "admin",
+      "password": "admin",
       "authorization": "admin"
     },
     {
       "id": 2,
-      "username": "krish",
-      "password": "h",
+      "username": "staff",
+      "password": "staff",
       "authorization": "staff"
-    },
-    {
-      "id": 3,
-      "username": "anand",
-      "password": "anand03",
-      "authorization": "admin"
-    },
-    {
-      "username": "asds",
-      "password": "sadads",
-      "authorization": "admin",
-      "id": 4
-    },
-    {
-      "username": "asds",
-      "password": "sadads",
-      "authorization": "admin",
-      "id": 5
-    },
-    {
-      "username": "asds",
-      "password": "sadads",
-      "authorization": "admin",
-      "id": 6
-    },
-    {
-      "username": "asdsa",
-      "password": "asdsad",
-      "authorization": "admin",
-      "id": 7
-    },
-    {
-      "username": "ssad",
-      "password": "feva",
-      "authorization": "admin",
-      "id": 8
     }
   ],
   "comments": [
@@ -75,7 +39,7 @@
       "id": 10
     },
     {
-      "service": "Veg Meal",
+      "service": "Veg Meals",
       "flight": "S0001",
       "id": 11
     },
@@ -83,16 +47,6 @@
       "flight": "S0001",
       "service": "Wheel Chair",
       "id": 12
-    },
-    {
-      "flight": "S0001",
-      "service": "asdsa",
-      "id": 13
-    },
-    {
-      "flight": "S0002",
-      "service": "asdsa",
-      "id": 14
     },
     {
       "flight": "S0002",
@@ -103,6 +57,11 @@
       "flight": "S0002",
       "service": "Lounge Acess",
       "id": 16
+    },
+    {
+      "flight": "S0002",
+      "service": "Infant services",
+      "id": 17
     }
   ],
   "passengers": [
@@ -117,7 +76,7 @@
       "flight": "S0002",
       "name": "Tetset",
       "address": "Bangalore",
-      "passportNo": "sete",
+      "passportNo": "Z3URS",
       "id": 2
     },
     {
@@ -140,6 +99,18 @@
       "address": "CBSE",
       "passportNo": "ASDE",
       "id": 5
+    },
+    {
+      "flight": "S0002",
+      "name": "Sekhar",
+      "passportNo": "J2TJL",
+      "address": "Hyderabad",
+      "checkin": {
+        "isCheckedIn": "N",
+        "services": [],
+        "seatno": "S"
+      },
+      "id": 6
     }
   ],
   "checkin": [
@@ -147,8 +118,7 @@
       "seatno": "S4",
       "isCheckedIn": "Y",
       "services": [
-        10,
-        13
+        10
       ],
       "id": 1
     },
@@ -156,17 +126,16 @@
       "seatno": "S3",
       "isCheckedIn": "Y",
       "services": [
-        14,
         15
       ],
       "id": 2
     },
     {
       "seatno": "S1",
-      "isCheckedIn": "Y",
+      "isCheckedIn": "N",
       "services": [
-        11,
-        10
+        10,
+        12
       ],
       "id": 3
     },
@@ -174,19 +143,23 @@
       "seatno": "S2",
       "isCheckedIn": "Y",
       "services": [
-        12,
-        13
+        12
       ],
       "id": 4
     },
     {
       "isCheckedIn": "N",
       "services": [
-        11,
-        13
+        11
       ],
       "seatno": "S",
       "id": 5
+    },
+    {
+      "isCheckedIn": "N",
+      "services": [],
+      "seatno": "S",
+      "id": 6
     }
   ]
 }

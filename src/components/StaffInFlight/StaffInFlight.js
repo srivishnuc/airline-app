@@ -18,6 +18,7 @@ const StaffInFlight = () => {
  const passengerDetails = useSelector((state) => state.admins.passengers);
  const flights = useSelector((state) => state.admins.flights);
  const [selectedFlight, setFlight] = useState(flights.length && flights[0].id);
+
  useEffect(() => {
   dispatch(getPassengers());
   dispatch(getCheckin());

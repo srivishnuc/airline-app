@@ -9,6 +9,7 @@ import StaffCheckIn from './StaffCheckIn/StaffCheckIn';
 import StaffInFlight from './StaffInFlight/StaffInFlight';
 import AdminManagePassenger from './AdminManagePassenger/AdminManagePassenger';
 import AdminManageAncillary from './AdminManageAncillary/AdminManageAncillary';
+import Footer from './Footer/Footer';
 
 const App = () => {
  return (
@@ -29,9 +30,7 @@ const App = () => {
      </Route>
     </Routes>
    </main>
-   <footer className="bg-light text-center text-lg-start mt-3 fixed-bottom">
-    <div className="text-center p-3">&copy; 2022 Copyright: SV Airlines</div>
-   </footer>
+   <Footer />
   </div>
  );
 };

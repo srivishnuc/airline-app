@@ -1,4 +1,0 @@
-{
-    "testEnvironment": "jsdom",
-       "moduleFileExtensions": [ "js", "jsx"]
- }
