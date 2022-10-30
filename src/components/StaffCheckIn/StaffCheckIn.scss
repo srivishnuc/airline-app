@@ -1,0 +1,22 @@
+.staff-checkin {
+ thead {
+  th:first-child {
+   width: 10%;
+  }
+  th:nth-child(2) {
+   width: 10%;
+  }
+  th:nth-child(3) {
+   width: 15%;
+  }
+  th:nth-child(4) {
+   width: 15%;
+  }
+  th:nth-child(5) {
+   width: 40%;
+  }
+  th:last-child {
+   width: 10%;
+  }
+ }
+}

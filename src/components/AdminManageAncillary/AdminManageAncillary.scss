@@ -1,13 +1,13 @@
-.mange-ancillary{
-    thead{
-        th:first-child{
-            width: 300px ;
-        }
-        th:nth-child(2){
-            width: 500px ;
-        }
-        th:last-child{
-            width: 200px ;
-        }
-    }
+.manage-ancillary {
+ thead {
+  th:first-child {
+   width: 30%;
+  }
+  th:nth-child(2) {
+   width: 50%;
+  }
+  th:last-child {
+   width: 20%;
+  }
+ }
 }

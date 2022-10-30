@@ -1,57 +1,176 @@
-import React, { useEffect } from 'react'
-import './StaffCheckIn.scss'
-import BackButton from '../ResusableComponents/BackButton'
-import { useAuthentication } from "../../customHooks/useAuthentication"
-import { getPassengers } from '../../Redux/Reducer/admin'
-import { getCheckin } from '../../Redux/Reducer/staff'
-import { useDispatch, useSelector } from 'react-redux'
-import PassengerCheckInDetails from './PassengerCheckInDetails'
+import React, { useEffect, useState } from 'react';
+import './StaffCheckIn.scss';
+import BackButton from '../ResusableComponents/BackButton';
+import { useAuthentication } from '../../customHooks/useAuthentication';
+import { getFlights, getPassengers, getServices } from '../../Redux/Reducer/admin';
+import { getCheckin } from '../../Redux/Reducer/staff';
+import { useDispatch, useSelector } from 'react-redux';
+import PassengerCheckInDetails from './PassengerCheckInDetails';
+import Table from 'react-bootstrap/table';
+import Card from 'react-bootstrap/Card';
 
 const StaffCheckIn = () => {
-    useAuthentication('staff')
-    const dispatch = useDispatch()
-    const checkInDetails = useSelector(state => state.staffs.checkin)
-    const passengerDetails = useSelector(state => state.admins.passengers)
+ const filterPassenger = [];
+ const checkinFilter = (checkin) => {
+  if (selectedFlight === '' && checkedIn === '' && service != '') {
+   if (checkin.services.includes(parseInt(service))) {
+    filterPassenger.push(checkin.id);
+    return true;
+   }
+  } else if (selectedFlight === '' && checkedIn != '' && service === '') {
+   if (checkin.isCheckedIn === checkedIn) {
+    filterPassenger.push(checkin.id);
+    return true;
+   }
+  } else if (selectedFlight != '' && checkedIn != '' && service === '') {
+   if (checkin.isCheckedIn === checkedIn) {
+    filterPassenger.push(checkin.id);
+    return true;
+   }
+  } else if (selectedFlight != '' && checkedIn === '' && service != '') {
+   if (checkin.services.includes(parseInt(service))) {
+    filterPassenger.push(checkin.id);
+    return true;
+   }
+  } else if (selectedFlight === '' && checkedIn != '' && service != '') {
+   if (checkin.isCheckedIn === checkedIn && checkin.services.includes(parseInt(service))) {
+    filterPassenger.push(checkin.id);
+    return true;
+   }
+  } else if (selectedFlight != '' && checkedIn != '' && service != '') {
+   if (checkin.isCheckedIn === checkedIn && checkin.services.includes(parseInt(service))) {
+    filterPassenger.push(checkin.id);
+    return true;
+   }
+  } else {
+   return true;
+  }
+ };
 
+ useAuthentication('staff');
+ const dispatch = useDispatch();
+ const [selectedFlight, setFlight] = useState('');
+ const [checkedIn, setCheckedIn] = useState('');
+ const [service, setService] = useState('');
+ const services = useSelector((state) =>
+  state.admins.services.filter((service) => {
+   if (selectedFlight != '') {
+    return service.flight === selectedFlight;
+   } else {
+    return false;
+   }
+  })
+ );
+ const flights = useSelector((state) => state.admins.flights);
+ const checkInDetails = useSelector((state) => state.staffs.checkin.filter(checkinFilter));
 
-    useEffect(() => {
-        dispatch(getPassengers())
-        dispatch(getCheckin())
-    }, [])
+ const passengerFilter = (passenger) => {
+  if (selectedFlight != '' && service === '' && checkedIn === '') {
+   return passenger.flight === selectedFlight;
+  } else if (selectedFlight === '' && checkedIn === '' && service != '') {
+   return filterPassenger.includes(passenger.id);
+  } else if (selectedFlight === '' && checkedIn != '' && service === '') {
+   return filterPassenger.includes(passenger.id);
+  } else if (selectedFlight !== '' && checkedIn != '' && service === '') {
+   if (passenger.flight === selectedFlight) {
+    return passenger && filterPassenger.includes(passenger.id);
+   }
+  } else if (selectedFlight != '' && checkedIn === '' && service != '') {
+   if (passenger.flight === selectedFlight) {
+    return passenger && filterPassenger.includes(passenger.id);
+   }
+  } else if (selectedFlight === '' && checkedIn != '' && service != '') {
+   return filterPassenger.includes(passenger.id);
+  } else if (selectedFlight != '' && checkedIn != '' && service != '') {
+   if (passenger.flight === selectedFlight) {
+    return filterPassenger.includes(passenger.id);
+   }
+  } else {
+   return passenger;
+  }
+ };
 
-    // const passengerCheckInDetails = ((arr1, arr2) => {
-    //     let arr = []
-    //     if (arr1.length && arr2.length) {
-    //          arr1.map((item, i) => {
-    //             if (item.id === arr2[i].passenger) {
-    //                 //merging two objects
-    //                 arr.push({ ...item, ...arr2[i] })                    
-    //             }
-    //         })
-    //         return arr
-    //     } else return [{ id: "", flight: "", name: "", isCheckedIn: "", seatno: "", services: [] }]
-    // })(passengerDetails, checkInDetails)
+ const passengers = useSelector((state) => state.admins.passengers.filter(passengerFilter));
 
-    let passengerCheckInDetails = []
-    for(let i = 0; i<passengerDetails.length;i++){
-        checkInDetails.forEach(chckDetails => {
-           if(chckDetails.passenger === passengerDetails[i].id){
-            passengerCheckInDetails.push({
-                ...passengerDetails[i],
-                ...chckDetails
-            })
-           }
-        })
-    }
-    
-    return (
-        <>
-            <BackButton />
-            <h1 class="fs-3">Check In</h1>
-            <h2 class="fs-5">Check In Details</h2>
-            {passengerCheckInDetails.map((passenger, index) => <PassengerCheckInDetails key={index} flight={passenger.flight} name={passenger.name} isCheckedIn={passenger.isCheckedIn} seatno={passenger.seatno} services={passenger.services} />)}
-        </>
-    )
-}
+ useEffect(() => {
+  dispatch(getPassengers());
+  dispatch(getCheckin());
+  dispatch(getServices());
+  dispatch(getFlights());
+ }, []);
 
-export default StaffCheckIn
+ return (
+  <>
+   <BackButton />
+   <h1 className="fs-3 text-center text-dark">Check In</h1>
+   <h2 className="fs-5 text-center text-dark">Check In Details</h2>
+   <Card>
+    <p className="h5 m-2">Filter Passenger details</p>
+    <div className="d-flex">
+     <select
+      className="form-control w-25 m-3"
+      onChange={(e) => {
+       setFlight(e.target.value);
+      }}>
+      <option value="">Select Flight</option>
+      {flights.map((flight) => (
+       <option key={flight.id} value={flight.id}>
+        {flight.name}
+       </option>
+      ))}
+     </select>
+     <select
+      className="form-control w-25 m-3"
+      onChange={(e) => {
+       setCheckedIn(e.target.value);
+      }}>
+      <option value="">CheckIn</option>
+      <option value="Y">Yes</option>
+      <option value="N">No</option>
+     </select>
+
+     <select
+      className="form-control w-25 m-3"
+      onChange={(e) => {
+       setService(e.target.value);
+      }}>
+      <option value="">Select Servies</option>
+      {services.map((service) => (
+       <option key={service.id} value={service.id}>
+        {service.service}
+       </option>
+      ))}
+     </select>
+    </div>
+   </Card>
+   <Card className="staff-checkin table-responsive mt-1">
+    <Table>
+     <caption className="m-1">List of Passenger checkin details</caption>
+     <thead>
+      <tr>
+       <th>Flight</th>
+       <th>Seat No</th>
+       <th>Name</th>
+       <th>Status</th>
+       <th>Services</th>
+       <th>Change Status</th>
+      </tr>
+     </thead>
+     <tbody>
+      {passengers.map((passenger, index) => (
+       <PassengerCheckInDetails
+        key={index}
+        flight={passenger.flight}
+        id={passenger.id}
+        name={passenger.name}
+        checkInDetails={checkInDetails.find((chckin) => chckin.id === passenger.id)}
+       />
+      ))}
+     </tbody>
+    </Table>
+   </Card>
+  </>
+ );
+};
+
+export default StaffCheckIn;
