@@ -24,7 +24,6 @@ export const editCheckin = createAsyncThunk(EDIT_CHECKIN, async (payload, { disp
 
 export const editServices = createAsyncThunk(EDIT_SERVICES, async (payload, { dispatch }) => {
  try {
-  console.log(payload);
   const res = await axios.patch(`${URL}checkin/${payload.id}`, payload.data);
   dispatch(getCheckin());
   return res.data;

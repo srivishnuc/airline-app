@@ -62,6 +62,16 @@
       "flight": "S0002",
       "service": "Infant services",
       "id": 17
+    },
+    {
+      "flight": "S0002",
+      "service": "Wheel Chair",
+      "id": 18
+    },
+    {
+      "service": "Test1",
+      "flight": "S0002",
+      "id": 19
     }
   ],
   "passengers": [
@@ -111,6 +121,49 @@
         "seatno": "S"
       },
       "id": 6
+    },
+    {
+      "flight": "S0002",
+      "name": "vishnu",
+      "passportNo": "AS2312",
+      "address": "Hyderabad",
+      "checkin": {
+        "isCheckedIn": "N",
+        "services": [],
+        "seatno": "S"
+      },
+      "id": 7
+    },
+    {
+      "flight": "S0001",
+      "name": "etset",
+      "passportNo": "set",
+      "address": "es",
+      "checkin": {
+        "isCheckedIn": "N",
+        "services": [],
+        "seatno": "S"
+      },
+      "id": 8
+    },
+    {
+      "flight": "S0001",
+      "name": "ava",
+      "passportNo": "aege",
+      "address": "et3",
+      "checkin": {
+        "isCheckedIn": "N",
+        "services": [],
+        "seatno": "S"
+      },
+      "id": 9
+    },
+    {
+      "flight": "S0001",
+      "name": "rwa",
+      "address": "are",
+      "passportNo": "awra",
+      "id": 10
     }
   ],
   "checkin": [
@@ -118,7 +171,8 @@
       "seatno": "S4",
       "isCheckedIn": "Y",
       "services": [
-        10
+        10,
+        12
       ],
       "id": 1
     },
@@ -132,7 +186,7 @@
     },
     {
       "seatno": "S1",
-      "isCheckedIn": "N",
+      "isCheckedIn": "Y",
       "services": [
         10,
         12
@@ -141,7 +195,7 @@
     },
     {
       "seatno": "S2",
-      "isCheckedIn": "Y",
+      "isCheckedIn": "N",
       "services": [
         12
       ],
@@ -150,16 +204,44 @@
     {
       "isCheckedIn": "N",
       "services": [
-        11
+        11,
+        12
       ],
       "seatno": "S",
       "id": 5
     },
     {
-      "isCheckedIn": "N",
+      "isCheckedIn": "Y",
       "services": [],
       "seatno": "S",
       "id": 6
+    },
+    {
+      "isCheckedIn": "Y",
+      "services": [
+        16,
+        15
+      ],
+      "seatno": "S",
+      "id": 7
+    },
+    {
+      "isCheckedIn": "N",
+      "services": [],
+      "seatno": "S",
+      "id": 8
+    },
+    {
+      "isCheckedIn": "N",
+      "services": [],
+      "seatno": "S",
+      "id": 9
+    },
+    {
+      "isCheckedIn": "N",
+      "services": [],
+      "seatno": "S",
+      "id": 10
     }
   ]
 }

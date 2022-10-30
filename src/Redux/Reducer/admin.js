@@ -75,7 +75,7 @@ export const postPassenger = createAsyncThunk(ADD_PASSENGER, async (payload, { d
   const passegerRes = await axios.post(`${URL}passengers`, payload);
   const checkinRes = await axios.post(`${URL}checkin`, payload.checkin);
   dispatch(getPassengers());
-  return { passegerRes, checkinRes };
+  return JSON.stringify({ passegerRes, checkinRes });
  } catch (err) {
   console.log(err);
  }
