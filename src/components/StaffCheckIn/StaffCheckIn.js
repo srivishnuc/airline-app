@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import './StaffCheckIn.scss';
 import BackButton from '../ResusableComponents/BackButton';
 import { useAuthentication } from '../../customHooks/useAuthentication';
-import { getFlights, getPassengers, getServices } from '../../Redux/Reducer/admin';
+import { getFlightDetails, getPassengers, getAncillary } from '../../Redux/Reducer/admin';
 import { getCheckin } from '../../Redux/Reducer/staff';
 import { useDispatch, useSelector } from 'react-redux';
 import PassengerCheckInDetails from './PassengerCheckInDetails';
@@ -95,8 +95,8 @@ const StaffCheckIn = () => {
  useEffect(() => {
   dispatch(getPassengers());
   dispatch(getCheckin());
-  dispatch(getServices());
-  dispatch(getFlights());
+  dispatch(getAncillary());
+  dispatch(getFlightDetails());
  }, []);
 
  return (

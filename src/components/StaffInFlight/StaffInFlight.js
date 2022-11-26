@@ -3,7 +3,7 @@ import './StaffInFlight.scss';
 import BackButton from '../ResusableComponents/BackButton';
 import { useAuthentication } from '../../customHooks/useAuthentication';
 import { useDispatch, useSelector } from 'react-redux';
-import { getPassengers, getServices, getFlights } from '../../Redux/Reducer/admin';
+import { getPassengers, getAncillary, getFlightDetails } from '../../Redux/Reducer/admin';
 import { getCheckin } from '../../Redux/Reducer/staff';
 import StaffInFlightDetails from './StaffInFlightDetails';
 import Table from 'react-bootstrap/Table';
@@ -22,8 +22,8 @@ const StaffInFlight = () => {
  useEffect(() => {
   dispatch(getPassengers());
   dispatch(getCheckin());
-  dispatch(getServices());
-  dispatch(getFlights());
+  dispatch(getAncillary());
+  dispatch(getFlightDetails());
  }, []);
 
  return (

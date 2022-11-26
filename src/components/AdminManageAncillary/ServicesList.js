@@ -24,7 +24,7 @@ const ServiceList = ({ flight, service, id, setError }) => {
  };
 
  return (
-  <tr>
+  <tr data-testid={`${flight}-service`}>
    <td>{flight}</td>
    <td>
     {isEdit ? (
@@ -49,7 +49,7 @@ const ServiceList = ({ flight, service, id, setError }) => {
         setError(false);
        }}>
        Cancel
-      </button>{' '}
+      </button>
      </>
     ) : (
      service
@@ -57,16 +57,12 @@ const ServiceList = ({ flight, service, id, setError }) => {
    </td>
    <td>
     <span>
-     {' '}
      <button className="btn btn-outline-primary btn-sm" onClick={EditServices}>
-      {' '}
       Edit
      </button>
     </span>
     <span>
-     {' '}
      <button className="btn btn-outline-danger btn-sm" onClick={DeleteServices}>
-      {' '}
       Delete
      </button>
     </span>

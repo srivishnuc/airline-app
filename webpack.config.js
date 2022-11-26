@@ -15,7 +15,7 @@ module.exports = {
    directory: path.join(__dirname, 'dist')
   },
   compress: true,
-  port: 9000,
+  port: 3000,
   hot: true,
   historyApiFallback: true // Routing issue
  },
@@ -36,7 +36,7 @@ module.exports = {
           targets: 'defaults'
          }
         ],
-        '@babel/preset-react',
+        '@babel/preset-react'
        ]
       }
      }
@@ -57,7 +57,7 @@ module.exports = {
      }
     }
    }
-  ],    
+  ]
  }
 };
 /*,

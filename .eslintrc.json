@@ -20,6 +20,7 @@
  },
  "plugins": ["react", "jest"],
  "rules": {
+  "require-jsdoc": 0,
   "prettier/prettier": [
    "error",
    {

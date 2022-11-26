@@ -3,11 +3,12 @@ import { useDispatch, useSelector } from 'react-redux';
 import { editPassenger as updatePass } from '../../Redux/Reducer/admin';
 import PropTypes from 'prop-types';
 
-const PassengerList = ({ flight, id, name, passno, address, setError }) => {
+const PassengerList = ({ flight, id, name, passno, address, setError, dob }) => {
  const [editPassenger, setEditPassenger] = useState(false);
  const [psname, setName] = useState(name);
  const [pspno, setPassno] = useState(passno);
  const [psadd, setAddress] = useState(address);
+ const [psdate, setDate] = useState(dob);
  const [pflight, setFlight] = useState(flight);
  const flights = useSelector((state) => state.admins.flights);
  const dispatch = useDispatch();
@@ -15,9 +16,12 @@ const PassengerList = ({ flight, id, name, passno, address, setError }) => {
   if (!editPassenger) {
    setEditPassenger(true);
   } else {
-   if (psname && pspno && psadd) {
+   if (psname.trim() && pspno.trim() && psadd.trim()) {
     dispatch(
-     updatePass({ id, data: { flight: pflight, name: psname, address: psadd, passportNo: pspno } })
+     updatePass({
+      id,
+      data: { flight: pflight, name: psname, address: psadd, passportNo: pspno, dob: psdate }
+     })
     );
     setEditPassenger(false);
     setError(false);
@@ -57,6 +61,20 @@ const PassengerList = ({ flight, id, name, passno, address, setError }) => {
      />
     ) : (
      name
+    )}
+   </td>
+   <td>
+    {editPassenger ? (
+     <input
+      type="date"
+      className="form-control w-50"
+      value={psdate}
+      onChange={(e) => {
+       setDate(e.target.value);
+      }}
+     />
+    ) : (
+     dob
     )}
    </td>
    <td>
@@ -117,7 +135,8 @@ PassengerList.propTypes = {
  name: PropTypes.string,
  passno: PropTypes.string,
  address: PropTypes.string,
- setError: PropTypes.func
+ setError: PropTypes.func,
+ dob: PropTypes.string
 };
 
 export default PassengerList;

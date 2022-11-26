@@ -1,5 +1,5 @@
 import { userState as initialState } from '../initialState';
-import { USER_LOGIN } from '../actionTypes';
+import { REQ_URL, USER_LOGIN } from '../actionConstant';
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import { userState } from '../initialState';
 import axios from 'axios';
@@ -7,7 +7,7 @@ import axios from 'axios';
 export const getUsers = createAsyncThunk(USER_LOGIN, async (payload) => {
  try {
   const res = await axios.get(
-   `http://localhost:3006/users?username=${payload.username}&password=${payload.password}`
+   `${REQ_URL}users?username=${payload.username}&password=${payload.password}`
   );
   return res.data;
  } catch (err) {

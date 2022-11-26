@@ -1,8 +1,8 @@
 import React from 'react';
 import './App.scss';
-import Header from './Header/Header';
+import Header from './ResusableComponents/Header';
 import { Routes, Route } from 'react-router-dom';
-import SignIn from './Signin/SignIn';
+import Login from './Login/Login';
 import AirlineStaff from './AirlineStaff/AirlineStaff';
 import AirlineAdmin from './AirlineAdmin/AirlineAdmin';
 import StaffCheckIn from './StaffCheckIn/StaffCheckIn';
@@ -17,7 +17,7 @@ const App = () => {
    <Header />
    <main>
     <Routes>
-     <Route path="/" element={<SignIn />} />
+     <Route path="/" element={<Login />} />
      <Route path="staff">
       <Route index element={<AirlineStaff />} />
       <Route path="checkin" element={<StaffCheckIn />} />

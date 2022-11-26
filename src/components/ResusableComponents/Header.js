@@ -1,15 +1,15 @@
 import React from 'react';
-import './Header.scss';
 import logo from '../../../public/images/logo.png';
 import Logout from '../Logout/Logout';
 import { useNavigate } from 'react-router-dom';
 import { useSelector } from 'react-redux';
+
 const Header = () => {
  const user = useSelector((state) => state.users.user);
  const navigate = useNavigate();
  const handleNavigate = () => {
   if (user.length) {
-   if (user[0].authorization === 'staff') navigate('/staff');
+   if (user[0].userType === 'staff') navigate('/staff');
    else navigate('/admin');
   }
  };

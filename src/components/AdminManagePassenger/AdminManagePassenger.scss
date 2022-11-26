@@ -1,7 +1,30 @@
 .manage-passenger {
  thead {
   th {
-   width: 20%;
+   width: 18%;
   }
+  td {
+   width: 18%;
+  }
+ }
+}
+.filter-missing-details {
+ display: flex;
+ flex-flow: row wrap;
+ padding: 2.5%;
+ label {
+  flex-basis: 33.33%;
+ }
+ h3 {
+  flex-basis: 100%;
+  margin-bottom: 2%;
+ }
+ #passno,
+ #address,
+ #dob {
+  width: 25px;
+  height: 25px;
+  accent-color: red;
+  vertical-align: middle;
  }
 }

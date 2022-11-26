@@ -6,7 +6,7 @@ export const useAuthentication = (checkurl) => {
  const user = useSelector((state) => state.users.user);
  const navigate = useNavigate();
  useEffect(() => {
-  if (user[0]?.authorization !== checkurl) {
+  if (user[0]?.userType !== checkurl) {
    navigate('/');
   }
  });

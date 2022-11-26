@@ -3,13 +3,13 @@ import './AdminManageAncillary.scss';
 import BackButton from '../ResusableComponents/BackButton';
 import { useAuthentication } from '../../customHooks/useAuthentication';
 import { useDispatch, useSelector } from 'react-redux';
-import { getServices, getFlights, postAncillary } from '../../Redux/Reducer/admin';
+import { getAncillary, getFlightDetails, postAncillary } from '../../Redux/Reducer/admin';
 import ServiceList from './ServicesList';
 import Table from 'react-bootstrap/Table';
 import Alert from 'react-bootstrap/Alert';
 import Card from 'react-bootstrap/Card';
 
-const AdminManageAncillary = () => {
+export default function AdminManageAncillary() {
  useAuthentication('admin');
  const dispatch = useDispatch();
  const admin = useSelector((state) => state.admins);
@@ -19,8 +19,8 @@ const AdminManageAncillary = () => {
  const [isError, setError] = useState(false);
 
  useEffect(() => {
-  dispatch(getServices());
-  dispatch(getFlights());
+  dispatch(getAncillary());
+  dispatch(getFlightDetails());
  }, []);
 
  const AddServices = () => {
@@ -121,6 +121,4 @@ const AdminManageAncillary = () => {
    </Card>
   </>
  );
-};
-
-export default AdminManageAncillary;
+}

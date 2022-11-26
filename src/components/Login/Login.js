@@ -1,20 +1,19 @@
 import React, { useState } from 'react';
 import { Button, Alert } from 'react-bootstrap';
-import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
 import { getUsers } from '../../Redux/Reducer/user';
-import './SignIn.scss';
 
-const SignIn = () => {
+const Login = () => {
  const [username, setUsername] = useState('');
  const [password, setPassword] = useState('');
  const [error, setError] = useState(false);
  const dispatch = useDispatch();
  const navigation = useNavigate();
 
- const login = async (e) => {
+ const userLogin = async (e) => {
   e.preventDefault();
-  if (username.length) {
+  if (username) {
    const loginUser = () =>
     new Promise((resolve) => {
      resolve(dispatch(getUsers({ username, password })));
@@ -23,13 +22,12 @@ const SignIn = () => {
    setPassword('');
 
    const checkLogin = await loginUser();
-   if (checkLogin && checkLogin.payload.length && checkLogin.payload[0].authorization === 'admin') {
+   console.log(checkLogin);
+   localStorage.setItem('username', checkLogin.payload[0].userType);
+   localStorage.setItem('usertype', checkLogin.payload[0].userType);
+   if (localStorage.getItem('usertype') === 'admin') {
     navigation('/admin');
-   } else if (
-    checkLogin &&
-    checkLogin.payload.length &&
-    checkLogin.payload[0].authorization === 'staff'
-   ) {
+   } else if (localStorage.getItem('usertype') === 'staff') {
     navigation('/staff');
    } else {
     setError(true);
@@ -51,7 +49,7 @@ const SignIn = () => {
     <h1 className="fs-3 mt-3 text-dark text-center cursor-default">Sign In Page</h1>
     <h2 className="fs-5 text-center cursor-default">Enter your Login credentials</h2>
     {error && <Alert variant="danger">Enter valid username/password</Alert>}
-    <form className="mt-5" onSubmit={login}>
+    <form className="mt-5" onSubmit={userLogin}>
      <div className="mb-3">
       <label className="w-50" htmlFor="username">
        Username
@@ -87,4 +85,4 @@ const SignIn = () => {
  );
 };
 
-export default SignIn;
+export default Login;
