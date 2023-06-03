@@ -1,4 +1,5 @@
 .manage-passenger {
+ margin-top: 1%;
  thead {
   th {
    width: 18%;
@@ -6,6 +7,9 @@
   td {
    width: 18%;
   }
+ }
+ .btn-cancel {
+  margin-left: 1%;
  }
 }
 .filter-missing-details {

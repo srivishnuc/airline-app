@@ -2,6 +2,7 @@ import { adminState as initialState } from '../initialState';
 import {
  REQ_URL,
  ADMIN_SERVICES,
+ ADMIN_SERVICES_TYPE,
  PASSENGER_LIST,
  ADMIN_LIST,
  ADD_ANCILLARY,
@@ -25,6 +26,15 @@ export const getFlightDetails = createAsyncThunk(ADMIN_LIST, async (payload) => 
 export const getAncillary = createAsyncThunk(ADMIN_SERVICES, async (payload) => {
  try {
   const res = await axios.get(`${REQ_URL}services`);
+  return res.data;
+ } catch (err) {
+  console.log(err);
+ }
+});
+
+export const getAncillaryType = createAsyncThunk(ADMIN_SERVICES_TYPE, async (payload) => {
+ try {
+  const res = await axios.get(`${REQ_URL}servicesType`);
   return res.data;
  } catch (err) {
   console.log(err);
@@ -145,6 +155,12 @@ export const admin = createSlice({
   },
   [editPassenger.rejected]: (state) => {
    state.msg = 'Passenger updation failed';
+  },
+  [getAncillaryType.fulfilled]: (state, { payload }) => {
+   state.servicesType = payload;
+  },
+  [getAncillaryType.rejected]: (state) => {
+   state.servicesType = 'Error fetching data';
   }
  }
 });

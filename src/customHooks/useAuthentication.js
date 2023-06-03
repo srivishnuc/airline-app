@@ -1,12 +1,11 @@
 import { useEffect } from 'react';
-import { useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 
 export const useAuthentication = (checkurl) => {
- const user = useSelector((state) => state.users.user);
+ const usertype = localStorage.getItem('usertype');
  const navigate = useNavigate();
  useEffect(() => {
-  if (user[0]?.userType !== checkurl) {
+  if (usertype !== checkurl) {
    navigate('/');
   }
  });

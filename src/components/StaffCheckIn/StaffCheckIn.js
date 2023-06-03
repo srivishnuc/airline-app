@@ -10,87 +10,12 @@ import Table from 'react-bootstrap/table';
 import Card from 'react-bootstrap/Card';
 
 const StaffCheckIn = () => {
- const filterPassenger = [];
- const checkinFilter = (checkin) => {
-  if (selectedFlight === '' && checkedIn === '' && service != '') {
-   if (checkin.services.includes(parseInt(service))) {
-    filterPassenger.push(checkin.id);
-    return true;
-   }
-  } else if (selectedFlight === '' && checkedIn != '' && service === '') {
-   if (checkin.isCheckedIn === checkedIn) {
-    filterPassenger.push(checkin.id);
-    return true;
-   }
-  } else if (selectedFlight != '' && checkedIn != '' && service === '') {
-   if (checkin.isCheckedIn === checkedIn) {
-    filterPassenger.push(checkin.id);
-    return true;
-   }
-  } else if (selectedFlight != '' && checkedIn === '' && service != '') {
-   if (checkin.services.includes(parseInt(service))) {
-    filterPassenger.push(checkin.id);
-    return true;
-   }
-  } else if (selectedFlight === '' && checkedIn != '' && service != '') {
-   if (checkin.isCheckedIn === checkedIn && checkin.services.includes(parseInt(service))) {
-    filterPassenger.push(checkin.id);
-    return true;
-   }
-  } else if (selectedFlight != '' && checkedIn != '' && service != '') {
-   if (checkin.isCheckedIn === checkedIn && checkin.services.includes(parseInt(service))) {
-    filterPassenger.push(checkin.id);
-    return true;
-   }
-  } else {
-   return true;
-  }
- };
-
  useAuthentication('staff');
+
  const dispatch = useDispatch();
  const [selectedFlight, setFlight] = useState('');
  const [checkedIn, setCheckedIn] = useState('');
- const [service, setService] = useState('');
- const services = useSelector((state) =>
-  state.admins.services.filter((service) => {
-   if (selectedFlight != '') {
-    return service.flight === selectedFlight;
-   } else {
-    return false;
-   }
-  })
- );
- const flights = useSelector((state) => state.admins.flights);
- const checkInDetails = useSelector((state) => state.staffs.checkin.filter(checkinFilter));
-
- const passengerFilter = (passenger) => {
-  if (selectedFlight != '' && service === '' && checkedIn === '') {
-   return passenger.flight === selectedFlight;
-  } else if (selectedFlight === '' && checkedIn === '' && service != '') {
-   return filterPassenger.includes(passenger.id);
-  } else if (selectedFlight === '' && checkedIn != '' && service === '') {
-   return filterPassenger.includes(passenger.id);
-  } else if (selectedFlight !== '' && checkedIn != '' && service === '') {
-   if (passenger.flight === selectedFlight) {
-    return passenger && filterPassenger.includes(passenger.id);
-   }
-  } else if (selectedFlight != '' && checkedIn === '' && service != '') {
-   if (passenger.flight === selectedFlight) {
-    return passenger && filterPassenger.includes(passenger.id);
-   }
-  } else if (selectedFlight === '' && checkedIn != '' && service != '') {
-   return filterPassenger.includes(passenger.id);
-  } else if (selectedFlight != '' && checkedIn != '' && service != '') {
-   if (passenger.flight === selectedFlight) {
-    return filterPassenger.includes(passenger.id);
-   }
-  } else {
-   return passenger;
-  }
- };
-
- const passengers = useSelector((state) => state.admins.passengers.filter(passengerFilter));
+ const [service, setService] = useState();
 
  useEffect(() => {
   dispatch(getPassengers());
@@ -98,6 +23,25 @@ const StaffCheckIn = () => {
   dispatch(getAncillary());
   dispatch(getFlightDetails());
  }, []);
+
+ const flights = useSelector((state) => state.admins.flights);
+
+ let services = useSelector((state) => state.admins.services);
+ let checkInDetails = useSelector((state) => state.staffs.checkin);
+ let passengers = useSelector((state) => state.admins.passengers);
+
+ if (selectedFlight) {
+  services = services.filter((service) => service.flight === selectedFlight);
+  passengers = passengers.filter((passenger) => passenger.flight === selectedFlight);
+ }
+
+ if (checkedIn) {
+  checkInDetails = checkInDetails.filter((checkIn) => checkIn.isCheckedIn === checkedIn);
+ }
+
+ if (service) {
+  checkInDetails = checkInDetails.filter((checkIn) => checkIn.services.includes(service));
+ }
 
  return (
   <>
@@ -111,6 +55,7 @@ const StaffCheckIn = () => {
       className="form-control w-25 m-3"
       onChange={(e) => {
        setFlight(e.target.value);
+       setService('');
       }}>
       <option value="">Select Flight</option>
       {flights.map((flight) => (
@@ -132,7 +77,7 @@ const StaffCheckIn = () => {
      <select
       className="form-control w-25 m-3"
       onChange={(e) => {
-       setService(e.target.value);
+       setService(parseInt(e.target.value));
       }}>
       <option value="">Select Servies</option>
       {services.map((service) => (

@@ -29,22 +29,26 @@ const PassengerCheckInDetails = ({ flight, name, checkInDetails, id }) => {
  };
 
  return (
-  <tr>
-   <td>{flight}</td>
-   <td>{checkInDetails?.seatno}</td>
-   <td>{name}</td>
-   <td>{checkInDetails?.isCheckedIn}</td>
-   <td>{servicesList}</td>
-   <td>
-    <button
-     className={
-      checkInDetails?.isCheckedIn === 'N' ? 'btn btn-outline-success' : 'btn btn-outline-danger'
-     }
-     onClick={toggleCheckin}>
-     {checkInDetails?.isCheckedIn === 'N' ? 'Check-in' : 'Check-out'}
-    </button>
-   </td>
-  </tr>
+  <>
+   {checkInDetails && (
+    <tr>
+     <td>{flight}</td>
+     <td>{checkInDetails?.seatno}</td>
+     <td>{name}</td>
+     <td>{checkInDetails?.isCheckedIn}</td>
+     <td>{servicesList}</td>
+     <td>
+      <button
+       className={
+        checkInDetails?.isCheckedIn === 'N' ? 'btn btn-outline-success' : 'btn btn-outline-danger'
+       }
+       onClick={toggleCheckin}>
+       {checkInDetails?.isCheckedIn === 'N' ? 'Check-in' : 'Check-out'}
+      </button>
+     </td>
+    </tr>
+   )}
+  </>
  );
 };
 

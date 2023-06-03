@@ -8,6 +8,7 @@ import PassengerList from './PassengerList';
 import Table from 'react-bootstrap/Table';
 import Alert from 'react-bootstrap/Alert';
 import Card from 'react-bootstrap/Card';
+import { Link } from 'react-router-dom';
 
 const AdminManagePassenger = () => {
  useAuthentication('admin');
@@ -23,41 +24,21 @@ const AdminManagePassenger = () => {
  const [filterPass, setFilterPass] = useState(false);
  const [filterAddress, setFilterAddress] = useState(false);
  const [filterDob, setFilterDob] = useState(false);
- const filterData = (pass) => {
-  if (filterPass && filterAddress && filterDob) {
-   if (!pass.passportNo.trim() && !pass.address.trim() && !pass.dob.trim()) {
-    return pass;
-   }
-  } else if (filterPass && filterAddress && !filterDob) {
-   if (!pass.passportNo.trim() && !pass.address.trim()) {
-    return pass;
-   }
-  } else if (filterPass && !filterAddress && filterDob) {
-   if (!pass.passportNo.trim() && !pass.dob.trim()) {
-    return pass;
-   }
-  } else if (!filterPass && filterAddress && filterDob) {
-   if (!pass.address.trim() && !pass.dob.trim()) {
-    return pass;
-   }
-  } else if (filterPass && !filterAddress && !filterDob) {
-   if (!pass.passportNo.trim()) {
-    return pass;
-   }
-  } else if (!filterPass && filterAddress && !filterDob) {
-   if (!pass.address.trim()) {
-    return pass;
-   }
-  } else if (!filterPass && !filterAddress && filterDob) {
-   if (!pass.dob.trim()) {
-    return pass;
-   }
-  } else {
-   return pass;
-  }
- };
- const passengers = useSelector((state) => state.admins.passengers.filter(filterData));
- const flights = useSelector((state) => state.admins.flight);
+ const flights = useSelector((state) => state.admins.flights);
+ let passengers = useSelector((state) => state.admins.passengers);
+
+ if (filterPass) {
+  passengers = passengers.filter((passenger) => passenger.passportNo == '');
+ }
+
+ if (filterAddress) {
+  passengers = passengers.filter((passenger) => passenger.address == '');
+ }
+
+ if (filterDob) {
+  passengers = passengers.filter((passenger) => passenger.dob == '');
+ }
+
  useEffect(() => {
   dispatch(getPassengers());
   dispatch(getFlightDetails());
@@ -147,6 +128,7 @@ const AdminManagePassenger = () => {
      <thead>
       <tr>
        <td>
+        {!isAddPassenger && <Link to="/admin/ancillary">Add Services Here</Link>}
         {isAddPassenger && (
          <select
           className="form-control w-75"
@@ -213,7 +195,7 @@ const AdminManagePassenger = () => {
         </span>
         {isAddPassenger && (
          <span>
-          <button className="btn btn-outline-danger" onClick={cancelAdd}>
+          <button className="btn btn-cancel btn-outline-danger" onClick={cancelAdd}>
            &nbsp;Cancel
           </button>
          </span>

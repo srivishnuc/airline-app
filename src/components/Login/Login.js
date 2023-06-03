@@ -3,13 +3,22 @@ import { Button, Alert } from 'react-bootstrap';
 import { useNavigate } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { getUsers } from '../../Redux/Reducer/user';
-
+import { useGoogleLogin } from '@react-oauth/google';
+import axios from 'axios';
 const Login = () => {
  const [username, setUsername] = useState('');
  const [password, setPassword] = useState('');
  const [error, setError] = useState(false);
  const dispatch = useDispatch();
  const navigation = useNavigate();
+
+ const login = useGoogleLogin({
+  onSuccess: async (response) => {
+   const data = await axios.get('https://www.googleapis.com/oauth2/v3/userinfo', {
+    headers: { Authorization: `Bearer ${response.access_token}` }
+   });
+  }
+ });
 
  const userLogin = async (e) => {
   e.preventDefault();
@@ -22,8 +31,7 @@ const Login = () => {
    setPassword('');
 
    const checkLogin = await loginUser();
-   console.log(checkLogin);
-   localStorage.setItem('username', checkLogin.payload[0].userType);
+   localStorage.setItem('username', checkLogin.payload[0].username);
    localStorage.setItem('usertype', checkLogin.payload[0].userType);
    if (localStorage.getItem('usertype') === 'admin') {
     navigation('/admin');
@@ -76,6 +84,7 @@ const Login = () => {
        placeholder="Password"
       />
      </div>
+     <Button onClick={() => login()}>Sign in with Google 🚀 </Button>
      <div className="mt-5 d-flex justify-content-end">
       <Button type="submit">Login</Button>
      </div>

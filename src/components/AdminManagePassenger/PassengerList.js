@@ -113,7 +113,7 @@ const PassengerList = ({ flight, id, name, passno, address, setError, dob }) => 
     }
     {editPassenger && (
      <button
-      className="btn btn-outline-danger btn-sm"
+      className="btn btn-cancel btn-outline-danger btn-sm"
       onClick={() => {
        setName(name);
        setPassno(passno);

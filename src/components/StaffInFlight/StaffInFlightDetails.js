@@ -1,80 +1,100 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import Select from 'react-select';
 import { editServices } from '../../Redux/Reducer/staff';
 import PropTypes from 'prop-types';
 
+import ModifyService from './ModifyService';
+
 const StaffInFlightDetails = ({ flight, name, checkInDetails, id }) => {
- const intialOption = [];
  const dispatch = useDispatch();
- const [modifyServices, setModifyServices] = useState(false);
- const [selectedOption, setSelectedOption] = useState(null);
- const [updateBtn, toggleBtn] = useState(true);
-
  const services = useSelector((state) => state.admins.services);
- const options = services
-  .filter((service) => service.flight === flight)
-  .map((ser) => ({ label: ser.service, value: ser.id }));
- const servicesList =
-  checkInDetails !== undefined ? (
-   checkInDetails.services.map((service, index) => {
-    const serviceObj = services.length ? services.find((ser) => ser.id === service) : [];
-    services.length && intialOption.push({ label: serviceObj.service, value: service });
-    return (
-     <span key={index}>
-      {serviceObj.service}
-      {index === checkInDetails.services.length - 1 ? '.' : ', '}
-     </span>
-    );
-   })
-  ) : (
-   <span></span>
-  );
+ const [ansiSelections, setAnsiSelections] = useState();
+ const [mealSelections, setMealSelections] = useState();
+ const [shopSelections, setShopSelections] = useState();
 
- const showModify = () => {
-  setSelectedOption(intialOption);
-  setModifyServices(true);
+ const servicesList = (type) => {
+  return services
+   .filter((service) => service.flight === flight && service.type === type)
+   .map((option) => ({
+    label: option.service,
+    value: option.id
+   }));
  };
 
- const hideModify = () => {
-  setSelectedOption(intialOption);
-  setModifyServices(false);
-  toggleBtn(true);
+ const selectedOption = (type) => {
+  const options = [];
+  checkInDetails?.services?.forEach((service) => {
+   const serObj = services?.find((ser) => ser.id == service && ser.type == type);
+   if (serObj) options.push({ label: serObj.service, value: service });
+  });
+  return options;
  };
 
- const modifyService = () => {
-  dispatch(editServices({ id, data: { services: selectedOption.map((option) => option.value) } }));
-  setModifyServices(false);
-  toggleBtn(true);
+ const setChange = (...selectedOptions) => {
+  const newOption = [...checkInDetails.services];
+  if (selectedOptions[1].action == 'select-option') {
+   selectedOptions[0].forEach((option) => {
+    if (!checkInDetails?.services.includes(option.value)) {
+     newOption.push(option.value);
+    }
+   });
+   dispatch(editServices({ id, data: { services: newOption } }));
+  } else if (selectedOptions[1].action == 'remove-value') {
+   const index = newOption.indexOf(selectedOptions[1].removedValue.value);
+   newOption.splice(index, 1);
+   dispatch(editServices({ id, data: { services: newOption } }));
+  } else if (selectedOptions[1].action == 'clear') {
+   const clearSer = [];
+   const updatedSer = [];
+   selectedOptions[1].removedValues.forEach((removedVal) => {
+    clearSer.push(removedVal.value);
+   });
+   newOption.forEach((option) => {
+    if (!clearSer.includes(option)) {
+     updatedSer.push(option);
+    }
+   });
+   dispatch(editServices({ id, data: { services: updatedSer } }));
+  }
  };
- const setChange = (selectedOption) => {
-  setSelectedOption(selectedOption);
-  toggleBtn(false);
- };
+
+ useEffect(() => {
+  setAnsiSelections(selectedOption('02'));
+  setMealSelections(selectedOption('01'));
+  setShopSelections(selectedOption('03'));
+ }, [checkInDetails, services]);
  return (
   <>
-   <tr>
-    <td>{flight}</td>
-    <td>{name}</td>
-    <td>{servicesList}</td>
-    <td>
-     {modifyServices ? (
-      <>
-       <Select defaultValue={selectedOption} onChange={setChange} options={options} isMulti />
-       <button className="btn btn-outline-primary btn-sm" onClick={modifyService} disabled={updateBtn}>
-        Update
-       </button>
-       <button className="btn btn-outline-danger btn-sm" onClick={hideModify}>
-        Cancel
-       </button>
-      </>
-     ) : (
-      <button className="btn btn-outline-primary btn-sm" onClick={showModify}>
-       Modify
-      </button>
-     )}
-    </td>
-   </tr>
+   {checkInDetails && (
+    <tr>
+     <td>{flight}</td>
+     <td>{name}</td>
+     <td>
+      <ModifyService
+       setChange={setChange}
+       selectedOption={ansiSelections}
+       options={servicesList('02')}
+       name={'ansi'}
+      />
+     </td>
+     <td>
+      <ModifyService
+       setChange={setChange}
+       selectedOption={mealSelections}
+       options={servicesList('01')}
+       name={'meal'}
+      />
+     </td>
+     <td>
+      <ModifyService
+       setChange={setChange}
+       selectedOption={shopSelections}
+       options={servicesList('03')}
+       name={'shop'}
+      />
+     </td>
+    </tr>
+   )}
   </>
  );
 };

@@ -12,12 +12,14 @@ import Card from 'react-bootstrap/Card';
 const StaffInFlight = () => {
  useAuthentication('staff');
  const dispatch = useDispatch();
- const checkInDetails = useSelector((state) =>
-  state.staffs.checkin.filter((check) => check.isCheckedIn)
- );
- const passengerDetails = useSelector((state) => state.admins.passengers);
+
+ const checkInData = useSelector((state) => state.staffs.checkin);
+ const passengerData = useSelector((state) => state.admins.passengers);
+
+ const [checkInDetails, setCheckInDetails] = useState([]);
+ const [passengerDetails, setPassengerDetails] = useState([]);
  const flights = useSelector((state) => state.admins.flights);
- const [selectedFlight, setFlight] = useState(flights.length && flights[0].id);
+ const [selectedFlight, setFlight] = useState('');
 
  useEffect(() => {
   dispatch(getPassengers());
@@ -26,6 +28,14 @@ const StaffInFlight = () => {
   dispatch(getFlightDetails());
  }, []);
 
+ useEffect(() => {
+  setCheckInDetails(checkInData.filter((check) => check.isCheckedIn == 'Y'));
+  if (selectedFlight) {
+   setPassengerDetails(passengerData.filter((passenger) => passenger.flight === selectedFlight));
+  } else {
+   setPassengerDetails(passengerData);
+  }
+ }, [selectedFlight, checkInData, passengerData]);
  return (
   <>
    <BackButton />
@@ -57,21 +67,20 @@ const StaffInFlight = () => {
        <th>Flight</th>
        <th>Name</th>
        <th>Ancillary Services</th>
-       <th>Add/Remove Services</th>
+       <th>Meal Preferences</th>
+       <th>Inflight Shopping</th>
       </tr>
      </thead>
      <tbody>
-      {passengerDetails
-       .filter((passenger) => passenger.flight === selectedFlight)
-       .map((passenger) => (
-        <StaffInFlightDetails
-         key={passenger.id}
-         id={passenger.id}
-         flight={passenger.flight}
-         name={passenger.name}
-         checkInDetails={checkInDetails.find((chckin) => chckin.id === passenger.id)}
-        />
-       ))}
+      {passengerDetails.map((passenger) => (
+       <StaffInFlightDetails
+        key={passenger.id}
+        id={passenger.id}
+        flight={passenger.flight}
+        name={passenger.name}
+        checkInDetails={checkInDetails.find((chckin) => chckin.id === passenger.id)}
+       />
+      ))}
      </tbody>
     </Table>
    </Card>

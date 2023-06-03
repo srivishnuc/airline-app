@@ -3,7 +3,12 @@ import './AdminManageAncillary.scss';
 import BackButton from '../ResusableComponents/BackButton';
 import { useAuthentication } from '../../customHooks/useAuthentication';
 import { useDispatch, useSelector } from 'react-redux';
-import { getAncillary, getFlightDetails, postAncillary } from '../../Redux/Reducer/admin';
+import {
+ getAncillaryType,
+ getAncillary,
+ getFlightDetails,
+ postAncillary
+} from '../../Redux/Reducer/admin';
 import ServiceList from './ServicesList';
 import Table from 'react-bootstrap/Table';
 import Alert from 'react-bootstrap/Alert';
@@ -13,12 +18,15 @@ export default function AdminManageAncillary() {
  useAuthentication('admin');
  const dispatch = useDispatch();
  const admin = useSelector((state) => state.admins);
+ const servicesTypes = useSelector((state) => state.admins.servicesType);
  const [isAddServices, setAddServices] = useState(false);
+ const [servicesType, setServiceType] = useState(servicesTypes[0]?.id);
  const [newService, setNewService] = useState('');
  const [selectedFlight, setFlight] = useState('');
  const [isError, setError] = useState(false);
 
  useEffect(() => {
+  dispatch(getAncillaryType());
   dispatch(getAncillary());
   dispatch(getFlightDetails());
  }, []);
@@ -29,7 +37,7 @@ export default function AdminManageAncillary() {
    setFlight(admin.flights[0].name);
   } else {
    if (newService) {
-    dispatch(postAncillary({ flight: selectedFlight, service: newService }));
+    dispatch(postAncillary({ flight: selectedFlight, type: servicesType, service: newService }));
     setNewService('');
     setAddServices(!isAddServices);
    } else {
@@ -72,9 +80,24 @@ export default function AdminManageAncillary() {
        </td>
        <td>
         {isAddServices && (
+         <select
+          className="form-control"
+          onChange={(e) => {
+           setServiceType(e.target.value);
+          }}>
+          {servicesTypes.map((stype) => (
+           <option key={stype.id} value={stype.id}>
+            {stype.type}
+           </option>
+          ))}
+         </select>
+        )}
+       </td>
+       <td>
+        {isAddServices && (
          <input
           type="text"
-          className="form-control"
+          className="form-control d-inline w-50"
           onChange={(e) => {
            setError(false);
            setNewService(e.target.value);
@@ -82,6 +105,18 @@ export default function AdminManageAncillary() {
           value={newService}
           placeholder="Enter Ancillary Services"
          />
+        )}
+        {isAddServices && servicesType === '01' && (
+         <>
+          <label className="m-1" htmlFor="meals">
+           <input name="meals" type="radio" value="true" />
+           Veg
+          </label>
+          <label className="w-25" htmlFor="meals">
+           <input name="meals" type="radio" value="false" />
+           Non-Veg
+          </label>
+         </>
         )}
        </td>
        <td>
@@ -102,6 +137,7 @@ export default function AdminManageAncillary() {
       </tr>
       <tr>
        <th>Flight Name</th>
+       <th>Ancillary Type</th>
        <th>Ancillary services</th>
        <th>Modify </th>
       </tr>
@@ -113,6 +149,8 @@ export default function AdminManageAncillary() {
         id={ser.id}
         flight={ser.flight}
         service={ser.service}
+        serviceType={ser.type}
+        serviceTypes={servicesTypes?.find((service) => service.id === ser.type)}
         setError={setError}
        />
       ))}

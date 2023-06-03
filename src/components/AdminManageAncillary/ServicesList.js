@@ -1,11 +1,13 @@
 import React, { useState } from 'react';
 import { delAncillary, editAncillary } from '../../Redux/Reducer/admin';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import PropTypes from 'prop-types';
 
-const ServiceList = ({ flight, service, id, setError }) => {
+const ServiceList = ({ flight, serviceTypes, service, id, setError }) => {
  const [isEdit, setisEdit] = useState(false);
  const [editVal, setEditVal] = useState(service);
+ const [selectedService, setServiceType] = useState(serviceTypes?.id);
+ const allServices = useSelector((state) => state.admins.servicesType);
  const dispatch = useDispatch();
  const EditServices = () => {
   setisEdit(true);
@@ -16,16 +18,33 @@ const ServiceList = ({ flight, service, id, setError }) => {
 
  const updateService = () => {
   if (editVal) {
-   dispatch(editAncillary({ id, data: { service: editVal, flight } }));
+   dispatch(editAncillary({ id, data: { service: editVal, flight, type: selectedService } }));
    setisEdit(false);
   } else {
    setError(true);
   }
  };
-
  return (
   <tr data-testid={`${flight}-service`}>
    <td>{flight}</td>
+   <td>
+    {isEdit ? (
+     <select
+      className="form-control"
+      value={selectedService}
+      onChange={(e) => {
+       setServiceType(e.target.value);
+      }}>
+      {allServices.map((stype) => (
+       <option key={stype.id} value={stype.id}>
+        {stype.type}
+       </option>
+      ))}
+     </select>
+    ) : (
+     serviceTypes?.type
+    )}
+   </td>
    <td>
     {isEdit ? (
      <>
@@ -38,11 +57,11 @@ const ServiceList = ({ flight, service, id, setError }) => {
         setEditVal(e.target.value);
        }}
       />
-      <button className="btn btn-outline-primary btn-sm" onClick={updateService}>
+      <button className="btn mt-1 btn-outline-primary btn-sm" onClick={updateService}>
        Update
       </button>
       <button
-       className="btn btn-outline-danger btn-sm"
+       className="btn mt-1 btn-delete btn-outline-danger btn-sm"
        onClick={() => {
         setisEdit(false);
         setEditVal(service);
@@ -62,7 +81,7 @@ const ServiceList = ({ flight, service, id, setError }) => {
      </button>
     </span>
     <span>
-     <button className="btn btn-outline-danger btn-sm" onClick={DeleteServices}>
+     <button className="btn btn-delete btn-outline-danger btn-sm" onClick={DeleteServices}>
       Delete
      </button>
     </span>
@@ -74,6 +93,7 @@ const ServiceList = ({ flight, service, id, setError }) => {
 ServiceList.propTypes = {
  flight: PropTypes.string,
  service: PropTypes.string,
+ serviceTypes: PropTypes.object,
  id: PropTypes.number,
  setError: PropTypes.func
 };
