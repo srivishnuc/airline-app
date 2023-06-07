@@ -5,6 +5,8 @@ import { useDispatch } from 'react-redux';
 import { getUsers } from '../../Redux/Reducer/user';
 import { useGoogleLogin } from '@react-oauth/google';
 import axios from 'axios';
+import googleIcon from '../../../public/images/google.svg';
+
 const Login = () => {
  const [username, setUsername] = useState('');
  const [password, setPassword] = useState('');
@@ -14,14 +16,15 @@ const Login = () => {
 
  const login = useGoogleLogin({
   onSuccess: async (response) => {
-   const data = await axios.get('https://www.googleapis.com/oauth2/v3/userinfo', {
+   const responseData = await axios.get('https://www.googleapis.com/oauth2/v3/userinfo', {
     headers: { Authorization: `Bearer ${response.access_token}` }
    });
+   setUsername(responseData?.data?.email);
+   userLogin();
   }
  });
 
- const userLogin = async (e) => {
-  e.preventDefault();
+ const userLogin = async () => {
   if (username) {
    const loginUser = () =>
     new Promise((resolve) => {
@@ -52,12 +55,12 @@ const Login = () => {
  };
 
  return (
-  <div className="row justify-content-center vh-75">
+  <div className="login row justify-content-center vh-75">
    <div className="col-12 col-md-8 col-xl-4 mt-3 align-items-center">
     <h1 className="fs-3 mt-3 text-dark text-center cursor-default">Sign In Page</h1>
     <h2 className="fs-5 text-center cursor-default">Enter your Login credentials</h2>
     {error && <Alert variant="danger">Enter valid username/password</Alert>}
-    <form className="mt-5" onSubmit={userLogin}>
+    <form className="mt-5">
      <div className="mb-3">
       <label className="w-50" htmlFor="username">
        Username
@@ -84,9 +87,15 @@ const Login = () => {
        placeholder="Password"
       />
      </div>
-     <Button onClick={() => login()}>Sign in with Google 🚀 </Button>
-     <div className="mt-5 d-flex justify-content-end">
-      <Button type="submit">Login</Button>
+
+     <div className="mt-5 d-flex justify-content-between">
+      <Button onClick={() => login()} className="d-flex align-items-center">
+       <img className="googleIcon" alt="google-icon" src={googleIcon} height="20" width="20" />
+       <span>&nbsp;Sign in with Google</span>
+      </Button>
+      <Button type="button" onClick={userLogin}>
+       Login
+      </Button>
      </div>
     </form>
    </div>

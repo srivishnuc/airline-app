@@ -13,9 +13,9 @@ import Footer from './Footer/Footer';
 
 const App = () => {
  return (
-  <div className="container-fluid">
+  <div className="container-fluid d-flex flex-column justify-content-between h-100">
    <Header />
-   <main>
+   <main className="content">
     <Routes>
      <Route path="/" element={<Login />} />
      <Route path="staff">

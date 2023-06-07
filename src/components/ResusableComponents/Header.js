@@ -14,7 +14,7 @@ const Header = () => {
   }
  };
  return (
-  <header className="row bg-info text-center sticky-top">
+  <header className="header-container row bg-info text-center sticky-top">
    <div
     className="row no-gutters col-12  align-items-center fs-1 text-white fw-bold"
     onClick={handleNavigate}>
