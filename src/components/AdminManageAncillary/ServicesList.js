@@ -25,7 +25,7 @@ const ServiceList = ({ flight, serviceTypes, service, id, setError }) => {
   }
  };
  return (
-  <tr data-testid={`${flight}-service`}>
+  <tr data-testid={'service'}>
    <td>{flight}</td>
    <td>
     {isEdit ? (

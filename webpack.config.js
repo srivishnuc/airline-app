@@ -22,25 +22,15 @@ module.exports = {
  module: {
   rules: [
    {
-    test: /\.(jsx|js)$/,
+    test: /\.(js|jsx)$/,
     include: path.resolve(__dirname, 'src'),
     exclude: /node_modules/,
-    use: [
-     {
-      loader: 'babel-loader',
-      options: {
-       presets: [
-        [
-         '@babel/preset-env',
-         {
-          targets: 'defaults'
-         }
-        ],
-        '@babel/preset-react'
-       ]
-      }
+    use: {
+     loader: 'babel-loader',
+     options: {
+      presets: ['@babel/preset-react']
      }
-    ]
+    }
    },
    {
     test: /\.(s(a|c)ss)$/,
@@ -60,9 +50,3 @@ module.exports = {
   ]
  }
 };
-/*,
-    "babel": {
-        "presets": [
-          "babel-preset-react-app"
-        ]
-      }*/

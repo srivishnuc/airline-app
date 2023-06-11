@@ -25,7 +25,9 @@ const Header = () => {
      height="50"
      width="50"
     />
-    <span className="col-8 col-md-10 text-dark cursor-default">SV Airlines</span>
+    <span role="text" className="col-8 col-md-10 text-dark cursor-default">
+     SV Airlines
+    </span>
     <Logout />
    </div>
   </header>

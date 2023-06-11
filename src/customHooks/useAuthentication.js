@@ -8,5 +8,5 @@ export const useAuthentication = (checkurl) => {
   if (usertype !== checkurl) {
    navigate('/');
   }
- });
+ }, []);
 };

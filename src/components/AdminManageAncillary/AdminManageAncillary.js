@@ -149,7 +149,6 @@ export default function AdminManageAncillary() {
         id={ser.id}
         flight={ser.flight}
         service={ser.service}
-        serviceType={ser.type}
         serviceTypes={servicesTypes?.find((service) => service.id === ser.type)}
         setError={setError}
        />
