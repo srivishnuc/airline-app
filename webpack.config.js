@@ -48,10 +48,5 @@ module.exports = {
     }
    }
   ]
- },
- plugins: [
-  new MiniCssExtractPlugin({
-   filename: 'styles.[contenthash].css' // Extract and cache-bust CSS
-  })
- ]
+ }
 };
