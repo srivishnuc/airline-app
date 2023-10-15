@@ -5,7 +5,6 @@ import { useAuthentication } from '../../customHooks/useAuthentication';
 import { getPassengers, getFlightDetails, postPassenger } from '../../Redux/Reducer/admin';
 import { useDispatch, useSelector } from 'react-redux';
 import PassengerList from './PassengerList';
-import Table from 'react-bootstrap/Table';
 import Alert from 'react-bootstrap/Alert';
 import Card from 'react-bootstrap/Card';
 import { Link } from 'react-router-dom';
@@ -120,112 +119,107 @@ const AdminManagePassenger = () => {
      <strong>&nbsp;DateOfBirth</strong>
     </label>
    </Card>
-   <Card className="manage-passenger table-responsive">
+   <Card className="manage-passenger">
     {addPassengerError && <Alert variant="danger">Enter Passenger name</Alert>}
     {isError && <Alert variant="danger">Enter all required passenger details</Alert>}
-    <Table striped>
-     <caption>List of passengers</caption>
-     <thead>
-      <tr>
-       <td>
-        {!isAddPassenger && <Link to="/admin/ancillary">Add Services Here</Link>}
-        {isAddPassenger && (
-         <select
-          className="form-control w-75"
-          onChange={(e) => {
-           setFlight(e.target.value);
-          }}>
-          {flights.map((flight) => (
-           <option key={flight.id} value={flight.value}>
-            {flight.name}
-           </option>
-          ))}
-         </select>
-        )}
-       </td>
-       <td>
-        {isAddPassenger && (
-         <input
-          type="text"
-          className="form-control w-75"
-          placeholder="Name"
-          value={name}
-          onChange={(e) => setName(e.target.value)}
-         />
-        )}
-       </td>
-       <td>
-        {isAddPassenger && (
-         <input
-          type="date"
-          className="form-control w-75"
-          placeholder="DateOfBirth"
-          value={dob}
-          onChange={(e) => setDob(e.target.value)}
-         />
-        )}
-       </td>
-       <td>
-        {isAddPassenger && (
-         <input
-          type="text"
-          className="form-control w-75"
-          placeholder="Passport No"
-          value={passNo}
-          onChange={(e) => setPassNo(e.target.value)}
-         />
-        )}
-       </td>
-       <td>
-        {isAddPassenger && (
-         <input
-          type="text"
-          className="form-control"
-          placeholder="Address"
-          value={address}
-          onChange={(e) => setAddress(e.target.value)}
-         />
-        )}
-       </td>
-       <td>
-        <span>
-         <button className="btn btn-outline-primary" onClick={addPassenger}>
-          {isAddPassenger ? 'Add' : 'Add Passenger'}
-         </button>
-        </span>
-        {isAddPassenger && (
-         <span>
-          <button className="btn btn-cancel btn-outline-danger" onClick={cancelAdd}>
-           &nbsp;Cancel
-          </button>
-         </span>
-        )}
-       </td>
-      </tr>
-      <tr>
-       <th>Flight</th>
-       <th>Name</th>
-       <th>DOB</th>
-       <th>Passport No</th>
-       <th>Address</th>
-       <th>Modify</th>
-      </tr>
-     </thead>
-     <tbody>
-      {passengers.map((plst) => (
-       <PassengerList
-        key={plst.id}
-        id={plst.id}
-        name={plst.name}
-        flight={plst.flight}
-        address={plst.address}
-        passno={plst.passportNo}
-        dob={plst.dob}
-        setError={setError}
+    <p className="m-auto m-md-1 p-sm-1 fw-bold">List of passengers</p>
+    <ul className="d-sm-block d-md-flex flex-row list-unstyled">
+     <li>
+      {!isAddPassenger && <Link to="/admin/ancillary">Add Services Here</Link>}
+      {isAddPassenger && (
+       <select
+        className="form-control w-75"
+        onChange={(e) => {
+         setFlight(e.target.value);
+        }}>
+        {flights.map((flight) => (
+         <option key={flight.id} value={flight.value}>
+          <span className="fw-bold d-md-none">Flight : </span>
+          {flight.name}
+         </option>
+        ))}
+       </select>
+      )}
+     </li>
+     <li>
+      {isAddPassenger && (
+       <input
+        type="text"
+        className="form-control w-75"
+        placeholder="Name"
+        value={name}
+        onChange={(e) => setName(e.target.value)}
        />
-      ))}
-     </tbody>
-    </Table>
+      )}
+     </li>
+     <li>
+      {isAddPassenger && (
+       <input
+        type="date"
+        className="form-control w-75"
+        placeholder="DateOfBirth"
+        value={dob}
+        onChange={(e) => setDob(e.target.value)}
+       />
+      )}
+     </li>
+     <li>
+      {isAddPassenger && (
+       <input
+        type="text"
+        className="form-control w-75"
+        placeholder="Passport No"
+        value={passNo}
+        onChange={(e) => setPassNo(e.target.value)}
+       />
+      )}
+     </li>
+     <li>
+      {isAddPassenger && (
+       <input
+        type="text"
+        className="form-control"
+        placeholder="Address"
+        value={address}
+        onChange={(e) => setAddress(e.target.value)}
+       />
+      )}
+     </li>
+     <li>
+      <span>
+       <button className="btn btn-outline-primary" onClick={addPassenger}>
+        {isAddPassenger ? 'Add' : 'Add Passenger'}
+       </button>
+      </span>
+      {isAddPassenger && (
+       <span>
+        <button className="btn btn-cancel btn-outline-danger" onClick={cancelAdd}>
+         &nbsp;Cancel
+        </button>
+       </span>
+      )}
+     </li>
+    </ul>
+    <ul className="d-none d-sm-none d-md-flex flex-row list-unstyled fw-bold">
+     <li>Flight</li>
+     <li>Name</li>
+     <li>DOB</li>
+     <li>Passport No</li>
+     <li>Address</li>
+     <li>Modify</li>
+    </ul>
+    {passengers.map((plst) => (
+     <PassengerList
+      key={plst.id}
+      id={plst.id}
+      name={plst.name}
+      flight={plst.flight}
+      address={plst.address}
+      passno={plst.passportNo}
+      dob={plst.dob}
+      setError={setError}
+     />
+    ))}
    </Card>
   </>
  );

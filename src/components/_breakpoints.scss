@@ -8,7 +8,7 @@ $screen-md-min: 768px;
 $screen-xl-min: 1200px;
 
 // Small devices
-@mixin mobile-l {
+@mixin mobile {
  @media (min-width: #{$screen-sm-min}) {
   @content;
  }

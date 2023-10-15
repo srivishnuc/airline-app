@@ -1,19 +1,34 @@
+@import '../breakpoints';
+
 .manage-ancillary {
- thead {
-  th:first-child {
-   width: 21%;
-  }
-  th:nth-child(2) {
-   width: 27%;
-  }
-  th:nth-child(3) {
-   width: 32%;
-  }
-  th:last-child {
-   width: 21%;
+ ul {
+  width: 50%;
+  margin: auto;
+  padding-bottom: 0.5rem;
+  li {
+   margin: auto;
   }
  }
- .btn-delete {
-  margin-left: 1%;
+
+ @include tablet {
+  ul {
+   width: 95%;
+   margin: 0.5rem;
+   li:first-child {
+    width: 20%;
+   }
+   li:nth-child(2) {
+    width: 27%;
+   }
+   li:nth-child(3) {
+    width: 32%;
+   }
+   li:last-child {
+    width: 21%;
+   }
+  }
+  .btn-delete {
+   margin-left: 1%;
+  }
  }
 }

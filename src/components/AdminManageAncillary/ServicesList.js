@@ -25,9 +25,13 @@ const ServiceList = ({ flight, serviceTypes, service, id, setError }) => {
   }
  };
  return (
-  <tr data-testid={'service'}>
-   <td>{flight}</td>
-   <td>
+  <ul className="d-sm-block  d-md-flex flex-row list-unstyled" data-testid={'service'}>
+   <li>
+    <span className="fw-bold d-md-none">Flight : </span>
+    {flight}
+   </li>
+   <li>
+    <span className="fw-bold d-md-none">Type : </span>
     {isEdit ? (
      <select
       className="form-control"
@@ -44,8 +48,9 @@ const ServiceList = ({ flight, serviceTypes, service, id, setError }) => {
     ) : (
      serviceTypes?.type
     )}
-   </td>
-   <td>
+   </li>
+   <li>
+    <span className="fw-bold d-md-none">Services : </span>
     {isEdit ? (
      <>
       <input
@@ -73,8 +78,8 @@ const ServiceList = ({ flight, serviceTypes, service, id, setError }) => {
     ) : (
      service
     )}
-   </td>
-   <td>
+   </li>
+   <li>
     <span>
      <button className="btn btn-outline-primary btn-sm" onClick={EditServices}>
       Edit
@@ -85,8 +90,8 @@ const ServiceList = ({ flight, serviceTypes, service, id, setError }) => {
       Delete
      </button>
     </span>
-   </td>
-  </tr>
+   </li>
+  </ul>
  );
 };
 

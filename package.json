@@ -4,6 +4,7 @@
  "description": "",
  "main": "index.js",
  "scripts": {
+  "build": "webpack --config webpack.config.js",
   "dev": "webpack-dev-server",
   "test": "jest --watch",
   "api": "json-server -p 3001 --watch db.json",

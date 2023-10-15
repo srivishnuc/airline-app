@@ -6,8 +6,8 @@ import { getFlightDetails, getPassengers, getAncillary } from '../../Redux/Reduc
 import { getCheckin } from '../../Redux/Reducer/staff';
 import { useDispatch, useSelector } from 'react-redux';
 import PassengerCheckInDetails from './PassengerCheckInDetails';
-import Table from 'react-bootstrap/table';
 import Card from 'react-bootstrap/Card';
+import SeatMap from '../SeatMap/SeatMap';
 
 const StaffCheckIn = () => {
  useAuthentication('staff');
@@ -48,11 +48,11 @@ const StaffCheckIn = () => {
    <BackButton />
    <h1 className="fs-3 text-center text-dark">Check In</h1>
    <h2 className="fs-5 text-center text-dark">Check In Details</h2>
-   <Card>
+   <Card className="mb-3">
     <p className="h5 m-2">Filter Passenger details</p>
     <div className="d-flex">
      <select
-      className="form-control w-25 m-3"
+      className="form-control w-25 m-2 h-25"
       onChange={(e) => {
        setFlight(e.target.value);
        setService('');
@@ -65,7 +65,7 @@ const StaffCheckIn = () => {
       ))}
      </select>
      <select
-      className="form-control w-25 m-3"
+      className="form-control w-25 m-2 h-25"
       onChange={(e) => {
        setCheckedIn(e.target.value);
       }}>
@@ -75,7 +75,7 @@ const StaffCheckIn = () => {
      </select>
 
      <select
-      className="form-control w-25 m-3"
+      className="form-control w-25 m-2 h-25"
       onChange={(e) => {
        setService(parseInt(e.target.value));
       }}>
@@ -88,31 +88,28 @@ const StaffCheckIn = () => {
      </select>
     </div>
    </Card>
-   <Card className="staff-checkin table-responsive mt-1">
-    <Table>
-     <caption className="m-1">List of Passenger checkin details</caption>
-     <thead>
-      <tr>
-       <th>Flight</th>
-       <th>Seat No</th>
-       <th>Name</th>
-       <th>Status</th>
-       <th>Services</th>
-       <th>Change Status</th>
-      </tr>
-     </thead>
-     <tbody>
-      {passengers.map((passenger, index) => (
-       <PassengerCheckInDetails
-        key={index}
-        flight={passenger.flight}
-        id={passenger.id}
-        name={passenger.name}
-        checkInDetails={checkInDetails.find((chckin) => chckin.id === passenger.id)}
-       />
-      ))}
-     </tbody>
-    </Table>
+   <Card>
+    <SeatMap data={passengers} selectedFlight={selectedFlight} checkInDetails={checkInDetails} />
+   </Card>
+   <Card className="staff-checkin mt-1">
+    <p className="m-auto m-md-1 p-sm-1 fw-bold">List of Passenger checkin details</p>
+    <ul className="d-none d-sm-none d-md-flex flex-row list-unstyled fw-bold">
+     <li>Flight</li>
+     <li>Seat No</li>
+     <li>Name</li>
+     <li>Status</li>
+     <li>Services</li>
+     <li>Change Status</li>
+    </ul>
+    {passengers.map((passenger, index) => (
+     <PassengerCheckInDetails
+      key={index}
+      flight={passenger.flight}
+      id={passenger.id}
+      name={passenger.name}
+      checkInDetails={checkInDetails.find((chckin) => chckin.id === passenger.id)}
+     />
+    ))}
    </Card>
   </>
  );

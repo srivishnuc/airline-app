@@ -1,22 +1,36 @@
+@import '../breakpoints';
+
 .staff-checkin {
- thead {
-  th:first-child {
-   width: 10%;
+ ul {
+  width: 50%;
+  margin: auto;
+  padding-bottom: 1rem;
+  li {
+   margin: auto;
   }
-  th:nth-child(2) {
-   width: 10%;
-  }
-  th:nth-child(3) {
-   width: 15%;
-  }
-  th:nth-child(4) {
-   width: 15%;
-  }
-  th:nth-child(5) {
-   width: 40%;
-  }
-  th:last-child {
-   width: 10%;
+ }
+ @include tablet {
+  ul {
+   width: 95%;
+   margin: 0.5rem;
+   li:first-child {
+    width: 10%;
+   }
+   li:nth-child(2) {
+    width: 10%;
+   }
+   li:nth-child(3) {
+    width: 15%;
+   }
+   li:nth-child(4) {
+    width: 15%;
+   }
+   li:nth-child(5) {
+    width: 40%;
+   }
+   li:last-child {
+    width: 10%;
+   }
   }
  }
 }

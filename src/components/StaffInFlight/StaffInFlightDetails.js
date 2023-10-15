@@ -66,34 +66,43 @@ const StaffInFlightDetails = ({ flight, name, checkInDetails, id }) => {
  return (
   <>
    {checkInDetails && (
-    <tr>
-     <td>{flight}</td>
-     <td>{name}</td>
-     <td>
+    <ul className="d-sm-block d-md-flex flex-row list-unstyled">
+     <li>
+      <span className="fw-bold d-md-none">Flight : </span>
+      {flight}
+     </li>
+     <li>
+      <span className="fw-bold d-md-none">Name : </span>
+      {name}
+     </li>
+     <li>
+      <span className="fw-bold d-md-none">Ancillary services :</span>
       <ModifyService
        setChange={setChange}
        selectedOption={ansiSelections}
        options={servicesList('02')}
        name={'ansi'}
       />
-     </td>
-     <td>
+     </li>
+     <li>
+      <span className="fw-bold d-md-none">Meal preferences :</span>
       <ModifyService
        setChange={setChange}
        selectedOption={mealSelections}
        options={servicesList('01')}
        name={'meal'}
       />
-     </td>
-     <td>
+     </li>
+     <li>
+      <span className="fw-bold d-md-none">Inflight shopping :</span>
       <ModifyService
        setChange={setChange}
        selectedOption={shopSelections}
        options={servicesList('03')}
        name={'shop'}
       />
-     </td>
-    </tr>
+     </li>
+    </ul>
    )}
   </>
  );

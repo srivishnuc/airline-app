@@ -13,9 +13,9 @@ import Footer from './Footer/Footer';
 
 const App = () => {
  return (
-  <div className="container-fluid d-flex flex-column justify-content-between h-100">
+  <main className="container-fluid d-flex flex-column justify-content-between h-100">
    <Header />
-   <main className="content">
+   <section className="content">
     <Routes>
      <Route path="/" element={<Login />} />
      <Route path="staff">
@@ -29,9 +29,9 @@ const App = () => {
       <Route path="ancillary" element={<AdminManageAncillary />} />
      </Route>
     </Routes>
-   </main>
+   </section>
    <Footer />
-  </div>
+  </main>
  );
 };
 

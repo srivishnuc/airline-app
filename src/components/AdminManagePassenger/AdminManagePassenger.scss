@@ -1,17 +1,28 @@
+@import '../breakpoints';
+
 .manage-passenger {
- margin-top: 1%;
- thead {
-  th {
-   width: 18%;
-  }
-  td {
-   width: 18%;
+ ul {
+  width: 50%;
+  margin: auto;
+  padding-bottom: 0.5rem;
+  li {
+   margin: auto;
   }
  }
- .btn-cancel {
-  margin-left: 1%;
+ @include tablet {
+  ul {
+   width: 95%;
+   margin: 0.5rem;
+   li {
+    width: 18%;
+   }
+  }
+  .btn-cancel {
+   margin-left: 1%;
+  }
  }
 }
+
 .filter-missing-details {
  display: flex;
  flex-flow: row wrap;

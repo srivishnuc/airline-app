@@ -6,7 +6,6 @@ import { useDispatch, useSelector } from 'react-redux';
 import { getPassengers, getAncillary, getFlightDetails } from '../../Redux/Reducer/admin';
 import { getCheckin } from '../../Redux/Reducer/staff';
 import StaffInFlightDetails from './StaffInFlightDetails';
-import Table from 'react-bootstrap/Table';
 import Card from 'react-bootstrap/Card';
 
 const StaffInFlight = () => {
@@ -41,48 +40,40 @@ const StaffInFlight = () => {
    <BackButton />
    <h1 className="fs-3 text-center text-dark">In Flight</h1>
    <h2 className="fs-5 text-center text-dark">In Flight Details</h2>
-   <Card className="mb-1">
+   <Card className="mb-3">
     <p className="h5 m-2">Filter Passenger details</p>
-    <div className="d-flex">
-     <select
-      className="form-control w-25 m-1 mb-3"
-      value={selectedFlight}
-      onChange={(e) => {
-       setFlight(e.target.value);
-      }}>
-      <option value="">Select Flight</option>
-      {flights.map((flight) => (
-       <option key={flight.id} value={flight.id}>
-        {flight.name}{' '}
-       </option>
-      ))}
-     </select>
-    </div>
+    <select
+     className="form-control w-25 m-2"
+     value={selectedFlight}
+     onChange={(e) => {
+      setFlight(e.target.value);
+     }}>
+     <option value="">Select Flight</option>
+     {flights.map((flight) => (
+      <option key={flight.id} value={flight.id}>
+       {flight.name}{' '}
+      </option>
+     ))}
+    </select>
    </Card>
-   <Card className="staff-inflight table-responsive">
-    <Table>
-     <caption className="m-1">Passenger service details</caption>
-     <thead>
-      <tr>
-       <th>Flight</th>
-       <th>Name</th>
-       <th>Ancillary Services</th>
-       <th>Meal Preferences</th>
-       <th>Inflight Shopping</th>
-      </tr>
-     </thead>
-     <tbody>
-      {passengerDetails.map((passenger) => (
-       <StaffInFlightDetails
-        key={passenger.id}
-        id={passenger.id}
-        flight={passenger.flight}
-        name={passenger.name}
-        checkInDetails={checkInDetails.find((chckin) => chckin.id === passenger.id)}
-       />
-      ))}
-     </tbody>
-    </Table>
+   <Card className="staff-inflight">
+    <p className="m-auto m-md-1 p-sm-1 fw-bold">Passenger service details</p>
+    <ul className="d-none d-sm-none d-md-flex flex-row list-unstyled fw-bold">
+     <li>Flight</li>
+     <li>Name</li>
+     <li>Ancillary Services</li>
+     <li>Meal Preferences</li>
+     <li>Inflight Shopping</li>
+    </ul>
+    {passengerDetails.map((passenger) => (
+     <StaffInFlightDetails
+      key={passenger.id}
+      id={passenger.id}
+      flight={passenger.flight}
+      name={passenger.name}
+      checkInDetails={checkInDetails.find((chckin) => chckin.id === passenger.id)}
+     />
+    ))}
    </Card>
   </>
  );

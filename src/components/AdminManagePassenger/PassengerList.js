@@ -31,8 +31,9 @@ const PassengerList = ({ flight, id, name, passno, address, setError, dob }) => 
   }
  };
  return (
-  <tr>
-   <td>
+  <ul className="d-sm-block d-md-flex flex-row list-unstyled">
+   <li>
+    <span className="fw-bold d-md-none">Flight : </span>
     {editPassenger ? (
      <select
       className="form-control w-75"
@@ -48,8 +49,9 @@ const PassengerList = ({ flight, id, name, passno, address, setError, dob }) => 
     ) : (
      flight
     )}
-   </td>
-   <td>
+   </li>
+   <li>
+    <span className="fw-bold d-md-none">Name : </span>
     {editPassenger ? (
      <input
       type="text"
@@ -62,8 +64,9 @@ const PassengerList = ({ flight, id, name, passno, address, setError, dob }) => 
     ) : (
      name
     )}
-   </td>
-   <td>
+   </li>
+   <li>
+    <span className="fw-bold d-md-none">DOB : </span>
     {editPassenger ? (
      <input
       type="date"
@@ -76,8 +79,9 @@ const PassengerList = ({ flight, id, name, passno, address, setError, dob }) => 
     ) : (
      dob
     )}
-   </td>
-   <td>
+   </li>
+   <li>
+    <span className="fw-bold d-md-none">Passport no : </span>
     {editPassenger ? (
      <input
       type="text"
@@ -90,8 +94,9 @@ const PassengerList = ({ flight, id, name, passno, address, setError, dob }) => 
     ) : (
      passno
     )}
-   </td>
-   <td>
+   </li>
+   <li>
+    <span className="fw-bold d-md-none">Address : </span>
     {editPassenger ? (
      <input
       type="text"
@@ -104,8 +109,8 @@ const PassengerList = ({ flight, id, name, passno, address, setError, dob }) => 
     ) : (
      address
     )}
-   </td>
-   <td>
+   </li>
+   <li>
     {
      <button className="btn btn-outline-primary btn-sm" onClick={updatePassenger}>
       {editPassenger ? 'Update' : 'Edit'}
@@ -124,8 +129,8 @@ const PassengerList = ({ flight, id, name, passno, address, setError, dob }) => 
       &nbsp;Cancel
      </button>
     )}
-   </td>
-  </tr>
+   </li>
+  </ul>
  );
 };
 
