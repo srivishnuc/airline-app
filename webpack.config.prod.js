@@ -1,23 +1,12 @@
 const path = require('path');
-const webpack = require('webpack');
 
 module.exports = {
- mode: 'development',
- plugins: [new webpack.HotModuleReplacementPlugin()],
+ mode: 'production',
  entry: path.resolve(__dirname, 'src', 'index.js'),
  output: {
   path: path.resolve(__dirname, 'dist'),
   filename: 'bundle.js',
   publicPath: '/' // Routing issue
- },
- devServer: {
-  static: {
-   directory: path.join(__dirname, 'dist')
-  },
-  compress: true,
-  port: 3000,
-  hot: true,
-  historyApiFallback: true // Routing issue
  },
  module: {
   rules: [
@@ -48,10 +37,5 @@ module.exports = {
     }
    }
   ]
- },
- plugins: [
-  new MiniCssExtractPlugin({
-   filename: 'styles.[contenthash].css' // Extract and cache-bust CSS
-  })
- ]
+ }
 };

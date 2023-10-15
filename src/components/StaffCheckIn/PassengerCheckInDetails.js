@@ -1,11 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { useSelector } from 'react-redux';
-import { editCheckin } from '../../Redux/Reducer/staff';
-import { useDispatch } from 'react-redux';
 
 const PassengerCheckInDetails = ({ flight, name, checkInDetails, id }) => {
- const dispatch = useDispatch();
  const services = useSelector((state) => state.admins.services);
  const servicesList =
   checkInDetails !== undefined ? (
@@ -21,12 +18,6 @@ const PassengerCheckInDetails = ({ flight, name, checkInDetails, id }) => {
   ) : (
    <span></span>
   );
-
- const toggleCheckin = () => {
-  dispatch(
-   editCheckin({ id, data: { isCheckedIn: checkInDetails.isCheckedIn === 'Y' ? 'N' : 'Y' } })
-  );
- };
 
  return (
   <>
@@ -51,15 +42,6 @@ const PassengerCheckInDetails = ({ flight, name, checkInDetails, id }) => {
      <li>
       <span className="fw-bold d-md-none">Services : </span>
       {servicesList}
-     </li>
-     <li>
-      <button
-       className={
-        checkInDetails?.isCheckedIn === 'N' ? 'btn btn-outline-success' : 'btn btn-outline-danger'
-       }
-       onClick={toggleCheckin}>
-       {checkInDetails?.isCheckedIn === 'N' ? 'Check-in' : 'Check-out'}
-      </button>
      </li>
     </ul>
    )}

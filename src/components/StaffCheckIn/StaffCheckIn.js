@@ -99,7 +99,6 @@ const StaffCheckIn = () => {
      <li>Name</li>
      <li>Status</li>
      <li>Services</li>
-     <li>Change Status</li>
     </ul>
     {passengers.map((passenger, index) => (
      <PassengerCheckInDetails

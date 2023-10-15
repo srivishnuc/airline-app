@@ -56,7 +56,7 @@ const AdminManagePassenger = () => {
       passportNo: passNo,
       address,
       dob,
-      checkin: { isCheckedIn: 'N', services: [], seatno: 'S' }
+      checkin: { isCheckedIn: 'N', services: [], seatno: 'S10' }
      })
     );
     setAddPassenger(false);
